@@ -1,47 +1,87 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Dassai in 5 Minutes"
+sidebarTitle: "Quickstart"
+description: "Create your account, set up your research portfolio, and ask your first AI-powered A-share research question in just a few minutes."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+This guide walks you through everything you need to do to go from a blank account to your first saved Research Workbench. By the end, you will have added securities you follow, asked a natural-language research question in Chinese, explored a source-cited AI answer, and saved components from that answer as a persistent workspace you can return to.
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+<Tip>
+  Dassai's Super Agent understands plain Chinese. You do not need to learn any query syntax or financial shorthand. Ask the way you would ask a knowledgeable colleague — for example, "贵州茅台的毛利率近三年有什么变化趋势？" or "宁德时代最新公告里有哪些值得关注的风险因素？" The more specific your question, the more focused the answer.
+</Tip>
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Create your account">
+    Navigate to the Dassai sign-in page. You can register and sign in with:
 
-    ```bash
-    npm install your-package
-    ```
+    - **WeChat OAuth** — click "微信登录" and authorize via the WeChat QR code flow. No separate password is required.
+    - **Email and password** — enter your email address, create a password, and verify your email via the confirmation link sent to your inbox.
+
+    Once signed in, Dassai will prompt you to complete **First Activation** (首次激活): a short setup sequence that confirms your securities, saves your first Research Workbench, and records your first Judgment Premise. You can skip individual steps and return to them later, but Dassai's monitoring and alerts only become active after activation is complete.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Set up your first watchlist">
+    Go to **Investments** in the sidebar, then open the **Watchlist** tab. Click **添加证券** (Add Security) and search by:
+
+    - **Chinese company name** — e.g., `贵州茅台`
+    - **Six-digit A-share symbol** — e.g., `600519`
+    - **Exchange-qualified code** — e.g., `600519.SH`
+
+    Add one to three securities you actively follow. For example:
+
+    | Security | Code | Exchange |
+    |---|---|---|
+    | 贵州茅台 | 600519 | 上交所 (SH) |
+    | 宁德时代 | 300750 | 深交所 (SZ) |
+    | 沪深300ETF | 510300 | 上交所 (SH) |
+
+    If you want to track simulated research positions with weights, open the **Research Portfolios** tab and create a named portfolio. Assign research weights to each holding — Dassai will flag weights that do not normalize correctly before running any analysis.
+
+    <Info>
+      Dassai accepts standard A-share codes in three formats: six-digit symbol (`600519`), exchange-qualified code (`600519.SH` or `000001.SZ`), or Chinese company name. If a name is ambiguous — for example, a company that has changed its name — Dassai will ask you to confirm which entity you mean before proceeding.
+    </Info>
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
+  <Step title="Ask your first research question">
+    The **global Ask bar** runs along the bottom of every page. Click it to expand the full input composer, then type a research question in Chinese. A good first question to try:
+
     ```
+    茅台最新财报有哪些值得关注的变化？
+    ```
+
+    You can also:
+
+    - **Select investment context** — click the Investments picker chip to attach one or more holdings or watchlist items as explicit context. The AI will scope its answer to those securities.
+    - **Choose a task template** — click **My Asks** to browse pre-built research templates organized by category: portfolio analysis, company deep dive, sector comparison, pre-trade research, and more.
+
+    Press **Enter** or click the submit button to send your question. Dassai will display real-time execution stages — entity resolution, data fetching, calculation, composition — so you always know what is happening.
+  </Step>
+
+  <Step title="Explore the answer">
+    Dassai returns a structured, componentized answer rather than a block of prose. Each answer typically includes:
+
+    - **Narrative summary** — a concise interpretation labeled as AI-generated analysis, distinct from raw facts and calculations.
+    - **Metric cards** — individual data points (e.g., revenue, gross margin, YoY change) showing value, unit, period, and data freshness.
+    - **Trend charts** — time-series visualizations with explicit adjustment conventions (e.g., forward-adjusted close) and period labels.
+    - **Disclosure or document cards** — links to official announcements or filings cited in the answer.
+    - **Numbered citations** — every material claim carries a superscript citation. Click any citation to open the **source drawer**, which shows provider, document title, publication date, data capture date, and a link to the original source location.
+    - **Follow-up chips** — suggested next questions appear below the answer. Click one to continue the thread with the same securities context already loaded.
+
+    If the answer is incomplete because some data is unavailable, Dassai labels it **partial** and explains which data is missing and why — it never silently fills gaps with generated text.
+  </Step>
+
+  <Step title="Save to a Research Workbench">
+    To preserve useful findings, save components from the answer to a named Research Workbench:
+
+    1. Hover over any component (metric card, chart, disclosure summary, or evidence fact) — a **Save** button appears.
+    2. Click **Save** and choose to create a new Workbench or add to an existing one.
+    3. Give your Workbench a descriptive name — for example, "茅台基本面追踪" or "消费白酒板块对比".
+    4. Optionally, record a **Judgment Premise** directly from the Workbench: state the belief the saved evidence supports, such as "茅台的高端化战略将维持未来三年毛利率在85%以上". Dassai will then monitor for new evidence that challenges or confirms this premise and surface a review task when relevant facts appear.
+
+    Your Workbench is private to your account and persists indefinitely. Return to it any time from the **Dashboard** or **History**.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<Note>
+  To go deeper on any of the concepts introduced here — Research Workbenches, Judgment Premises, fact changes, and judgment reviews — see the [Core Concepts](/concepts) section. To explore the full feature set for each of Dassai's eight work surfaces, see the [Features](/features) section.
+</Note>

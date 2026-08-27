@@ -1,0 +1,96 @@
+---
+title: "The Super Agent: Your AI Investment Research Partner"
+sidebarTitle: "Super Agent"
+description: "Dassai's Super Agent understands natural-language A-share research questions, plans multi-step research tasks, and returns interactive, source-grounded answers."
+---
+
+The Super Agent is Dassai's AI research layer — the system that receives your natural-language questions, figures out what research task you are actually asking for, plans the steps needed to answer it rigorously, and returns a structured, source-grounded response. What distinguishes it from a general-purpose AI chatbot is specificity: it knows what A-share securities are, how Chinese financial reporting works, what exchange-qualified stock codes look like, and which types of questions can be answered with deterministic data versus which require interpretation. It does not generate plausible-sounding text and call it research — every numeric claim it makes is verified against a deterministic fact set before it reaches your screen, and every material conclusion is linked to a citable source.
+
+## What the Super Agent understands
+
+The Super Agent is built around the A-share market as a first-class domain, not bolted on top of a generic model.
+
+**Security entity resolution** — You can refer to a stock by its Chinese short name (e.g., "宁德时代"), its six-digit symbol ("300750"), or its exchange-qualified code ("300750.SZ"). All three forms resolve to the same canonical security identity. Historical names and common informal abbreviations are also recognized.
+
+**Disambiguation** — The A-share market contains many companies with similar names or overlapping abbreviations. When your question could refer to more than one security and the ambiguity would materially change the answer, the Super Agent asks a focused clarification question before proceeding. It does not silently pick one and proceed — nor does it ask clarifying questions when the answer is obvious from context.
+
+**Chinese-language intent routing** — The Super Agent is designed to receive questions in natural Chinese. It maps the intent behind a question — not just the keywords — to the correct research path. "这家公司的护城河到底在哪里" routes differently from "最近一个季度毛利率怎么样," even though both are about the same company.
+
+**Context inheritance** — When you select a security or research portfolio from the Investments picker before asking a question, that context is carried into the question automatically. Follow-up questions in a thread inherit the entities and date range from the previous exchange unless you change them.
+
+## Research intent types
+
+The Super Agent routes questions to one of six intent categories. Each category uses a different execution path and produces a different answer structure.
+
+<CardGroup cols={2}>
+  <Card title="A-share Screening" icon="filter">
+    Converts natural-language criteria ("找出近三年ROE持续高于15%且资产负债率低于40%的制造业公司") into a visible, editable filter model, executes a deterministic search, and returns a sortable result table with each company's criterion outcomes. You see exactly what was searched and why each result appeared or was excluded.
+  </Card>
+  <Card title="Company / Metric Lookup" icon="magnifying-glass-chart">
+    Retrieves a specific fact, ratio, or trend for a named company — gross margin, revenue growth, P/E, cash flow, whatever you ask. Returns a fact card with the value, unit, currency, report period, data timestamp, and source citation. Calculation conventions (e.g., adjusted price, TTM vs. annual period) are always stated explicitly.
+  </Card>
+  <Card title="Portfolio Analysis" icon="chart-pie">
+    Analyzes your simulated research portfolio against a named A-share benchmark. Returns benchmark-relative return, holding-level contribution breakdown, volatility, drawdown, beta, and Sharpe ratio — each with the formula identifier, sample window, and data cutoff visible. Clearly labeled as a simulated research view, not actual account performance.
+  </Card>
+  <Card title="Disclosure Research" icon="file-lines">
+    Takes a specific announcement, periodic report, or performance forecast and extracts locatable evidence facts — revenue figures, management commentary, disclosed risks, related-party transactions. Returns an event summary, a list of citable facts with source locations, and related metrics where applicable. Follow-up questions stay scoped to the document context.
+  </Card>
+  <Card title="Guide Me" icon="compass">
+    Activated when your intent is valid but the question is too broad or ambiguous to answer without more context. Asks one focused clarification question at a time (object, time range, or specific metric) and suggests actionable follow-up questions once the scope is clear. Never asks for information it could reasonably infer from context.
+  </Card>
+  <Card title="Trade Intent (Redirected)" icon="ban">
+    When a question asks for a buy/sell recommendation, a target price, a timing instruction, or an order of any kind, the Super Agent does not refuse and stop — it redirects. It transforms the question into the research dimensions that are actually useful: valuation context, downside scenario, disclosure review, liquidity check, assumption checklist. The result is a research answer, not an instruction.
+  </Card>
+</CardGroup>
+
+## Execution stages
+
+After you submit a question, the Super Agent works through a pipeline of stages. Each stage is visible in the interface, so you always know what the system is doing and why it is taking time.
+
+| Stage | What is happening |
+|---|---|
+| **Queued** | Your request has been received and is waiting for an available execution slot |
+| **Planning** | The agent is converting your question and context into a validated research plan — identifying intent, resolving entities, selecting tools, and checking for unsupported operations |
+| **Resolving** | Securities mentioned in your question are being matched to canonical A-share identities; ambiguous names are flagged for clarification |
+| **Fetching** | The plan's required data is being retrieved from the appropriate providers — disclosures, financials, prices, or source snapshots |
+| **Calculating** | Deterministic computations are running — returns, ratios, screening logic, portfolio metrics — using the fetched data and the stated formulas |
+| **Composing** | The agent is assembling the typed answer blocks: conclusions, charts, metric cards, disclosure summaries, and source references |
+| **Verifying** | Every numeric value in the narrative is checked against the deterministic fact set; unsupported claims are removed or labeled; citations are validated |
+| **Completed** | The full answer is ready and all claims are grounded |
+| **Partial** | The answer is available but some data was unavailable or a provider was unreachable; affected blocks are clearly labeled and the missing parts are described |
+| **Failed** | The run could not produce a usable answer; the reason is shown and a retry action is offered; the failed attempt is preserved for audit |
+
+If a stage fails transiently (for example, a provider timeout), you can retry from the failed stage. Retrying creates a new linked attempt and preserves the original failed run — both remain visible in History.
+
+## Answer structure
+
+Every Super Agent answer is organized into three distinct layers. You can engage at whatever depth the question requires.
+
+**Conclusion layer**
+The top of every answer is designed to be scannable in one screen. It states the direct answer to your question in plain language, with the most important figures shown prominently. This layer is useful for quick fact checks and for getting oriented before diving deeper.
+
+**Interactive layer**
+Below the conclusion, the answer expands into interactive components: trend charts with adjustable date ranges, financial tables you can sort and filter, screening result sets with column selection, scenario parameter sliders for portfolio analysis, and comparison panels for multi-security views. These components are data-bound — they reflect the fetched data, not a static image.
+
+**Evidence layer**
+The deepest layer contains everything that grounds the answer: source citations linked to the source drawer, raw calculation inputs and formula identifiers, data definitions and period conventions, explicit warnings about missing or stale data, and — where relevant — evidence that conflicts with the main conclusion. Nothing is hidden to make the answer look cleaner.
+
+## Follow-up questions
+
+At the end of every answer, the Super Agent suggests a set of follow-up questions as clickable chips. These suggestions are grounded in the current research context — they propose directions you have not yet covered rather than generic next steps.
+
+Clicking a follow-up chip adds it to the conversation thread and carries forward all current context: the same securities, the same date range, and the same source references where applicable. You can edit the follow-up question before submitting it, or ignore the suggestions entirely and type your own next question. Follow-up questions in the same thread are coherent — the agent knows what you already asked.
+
+You can also continue a thread directly from a Research Workbench: selecting any saved component and asking a follow-up will scope the question to that component's data context automatically.
+
+## Limitations
+
+<Note>
+  The Super Agent is a research tool, not a trading or advisory system. The following limitations are by design and will not change:
+
+  - **No live real-time tick data.** Market prices are available at end-of-day or near-real-time cadence depending on provider configuration, not at intraday tick level.
+  - **No broker access.** Dassai has no connection to any brokerage account, clearing system, or order management system. It cannot see your real holdings, real cash balance, or real trade history.
+  - **No personalized buy/sell guidance.** The Super Agent does not tell you to buy, sell, hold, add to, or reduce any position. It does not produce target prices, stop-loss levels, or timing recommendations. Questions phrased as "Should I buy X?" are always redirected to the research dimensions of the question.
+  - **Trade intent always redirected.** Regardless of how a trade-intent question is phrased, it will be transformed into a research-oriented response. The Trade surface in the sidebar explains this boundary in full.
+  - **Fixture data in demos.** Product demonstrations and sessions without a configured live data provider use fixture data. Fixture data is realistic but does not represent actual market prices or current company financials.
+</Note>

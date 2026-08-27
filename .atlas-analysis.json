@@ -1,0 +1,97 @@
+{
+  "projectType": "saas",
+  "projectName": "Dassai",
+  "projectDescription": "An AI-native A-share investment research workbench that lets self-directed investors build verifiable, evidence-backed research with judgment premise tracking and collaborative AI-powered workbenches.",
+  "theme": "almond",
+  "primaryColor": "#1c140c",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "account-setup"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/research-workbench",
+              "concepts/judgment-premises",
+              "concepts/evidence-and-sources",
+              "concepts/super-agent"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/dashboard",
+              "features/workbenches",
+              "features/conversations",
+              "features/investments",
+              "features/research",
+              "features/search",
+              "features/notifications",
+              "features/history"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/first-research",
+              "guides/building-a-workbench",
+              "guides/portfolio-analysis",
+              "guides/judgment-review"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/compliance-boundaries",
+              "reference/data-sources",
+              "reference/faq"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "AI Super Agent for natural-language A-share research in Chinese",
+    "Dynamic research workbenches — interactive Generative UI components saved as personal dashboards",
+    "Judgment Premise tracking — record and review the premises behind your investment decisions",
+    "Evidence-backed answers — every claim linked to verifiable sources with timestamps",
+    "Portfolio analysis with historical replay, contribution, volatility, and drawdown metrics",
+    "A-share stock and ETF screening using natural language criteria",
+    "Smart notifications tied to confirmed judgment premises and watch conditions",
+    "Compliance-safe design — no buy/sell recommendations, no trade execution, no broker connection",
+    "Conversation history with reopenable original data snapshots",
+    "Company deep-dive research including financial reports, exchange announcements, and forecasts"
+  ],
+  "publicApiSurface": [
+    "POST /api/ask — submit a research question with context, template, and investment objects",
+    "GET /api/conversations — list saved conversations",
+    "POST /api/conversations — create a new conversation",
+    "GET /api/market/status — get current A-share market status",
+    "GET /api/market/indices — get major A-share index data",
+    "GET /api/stock/[code] — get stock details by A-share code",
+    "GET /api/search — natural-language A-share security search",
+    "GET/POST /api/portfolio — manage research portfolios",
+    "GET/POST /api/watchlist — manage watchlist securities",
+    "GET/POST /api/workbenches — list and create research workbenches",
+    "GET /api/workbenches/[id] — get a specific workbench",
+    "GET/POST /api/inbox — get and manage inbox items",
+    "GET/POST /api/notifications — manage notification settings",
+    "GET/POST /api/monitor-conditions — manage watch conditions",
+    "GET /api/research — get research documents and announcements",
+    "GET /api/alerts — get alerts",
+    "POST /api/workbench-proposals — propose a new workbench from a conversation",
+    "POST /api/agent — interact with the research agent runtime"
+  ]
+}

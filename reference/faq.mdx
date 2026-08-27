@@ -1,0 +1,172 @@
+---
+title: "Frequently Asked Questions About Dassai"
+sidebarTitle: "FAQ"
+description: "Answers to common questions about using Dassai for A-share research, including account setup, data coverage, compliance, and workbench management."
+---
+
+These are quick answers to the questions users ask most often about Dassai. For deeper coverage of any topic, follow the links to the relevant documentation sections — each answer here points you to where you can learn more. If your question isn't covered below, start a conversation inside Dassai itself and ask in natural Chinese.
+
+## Getting Started
+
+<AccordionGroup>
+  <Accordion title="What is Dassai for?">
+    Dassai is an AI-native research workbench for self-directed A-share investors. It helps you research Chinese A-share stocks, ETFs, and investment themes using natural language; organize your investment reasoning inside persistent Research Workbenches; and track the evidence that supports or challenges your views over time.
+
+    Dassai is **not** a trading platform, a brokerage, or an investment advisor. It has no connection to any brokerage account or order execution system. It will not tell you what to buy or sell. Everything Dassai produces is for research reference only.
+
+    For a full description of what Dassai does and does not do, see [Compliance Boundaries](/reference/compliance-boundaries).
+  </Accordion>
+
+  <Accordion title="How do I add securities to track?">
+    You can add A-share securities to Dassai in two ways:
+
+    - **Watchlist** — Add any A-share security to your Watchlist from the Investments surface. Watchlist items appear in your Dashboard context and can be used as research objects in any conversation. A watchlist entry does not imply ownership or any research weight.
+    - **Research Portfolio** — Create a named Research Portfolio in the Investments surface, then add securities with an explicit research weight. Portfolio entries are used for historical replay, benchmark comparison, and portfolio-level analysis.
+
+    You can enter a security by its Chinese name, 6-digit symbol (e.g., `600519`), or exchange-qualified code (e.g., `600519.SH`). All three formats resolve to the same canonical security identity.
+  </Accordion>
+
+  <Accordion title="What language should I use when asking questions?">
+    Dassai is Chinese-first. Ask your research questions in natural Chinese — the same way you would phrase them to a knowledgeable colleague. You can refer to companies by their common Chinese names (e.g., 贵州茅台), their 6-digit symbols (e.g., 600519), or their exchange-qualified codes (e.g., 600519.SH).
+
+    When a name or code could refer to more than one security — for example, common abbreviations shared by multiple companies — Dassai will ask you to confirm which security you mean before proceeding. This disambiguation step prevents analysis from silently using the wrong entity.
+
+    Task templates in **My Asks** are also labeled in Chinese and organized by research intent, so you can discover what Dassai can do without writing prompts from scratch.
+  </Accordion>
+
+  <Accordion title="What happens if Dassai can't understand my question?">
+    If your question is ambiguous or underspecified in a way that would materially change the answer, Dassai uses its **Guide Me** flow: it asks you one focused clarifying question at a time — about the target security, the time range, or the specific metric — until the intent is clear enough to execute. Guide Me never presents a long disambiguation form; it works through one question at a time.
+
+    If your question carries a trading intent — for example, "这只股票能买吗？" or "现在加仓合适吗？" — Dassai will not refuse with an error. Instead, it redirects the question into neutral research territory: valuation, fundamentals, recent disclosures, downside scenarios, and evidence relevant to your existing premises. See [Compliance Boundaries](/reference/compliance-boundaries) for more detail on trade intent redirection.
+  </Accordion>
+</AccordionGroup>
+
+## Data and Coverage
+
+<AccordionGroup>
+  <Accordion title="Is the market data real-time?">
+    No. Dassai does not provide real-time tick data, intraday quotes, or Level-2 order-book depth. All market data reflects the most recently captured snapshot from Dassai's data pipeline.
+
+    Every data block in Dassai shows its own freshness indicator — not a single global "data as of" timestamp. You can see exactly when each value was last captured. When data is stale beyond a defined threshold, Dassai flags it with an explicit warning rather than displaying the value silently.
+
+    For full details on data freshness and coverage, see [Data Sources and Coverage](/reference/data-sources).
+  </Accordion>
+
+  <Accordion title="Why does a data field show 'Not Available'?">
+    Dassai distinguishes three separate states that all result in a field without a numeric value:
+
+    | State | Meaning |
+    |---|---|
+    | **Missing** | The data exists in principle but was not available from Dassai's data source at the time of capture |
+    | **Not Applicable** | The metric genuinely does not apply to this security — for example, inventory turnover for a bank |
+    | **Permission Denied** | The data exists and applies, but your access level does not include this field or document |
+
+    None of these states is coerced to zero or left as a blank without explanation. The label will tell you which of the three situations applies.
+  </Accordion>
+
+  <Accordion title="How are prices adjusted for splits and dividends?">
+    Dassai uses **forward-adjusted prices (前复权)** for all return calculations, portfolio historical replay, and performance charts. This convention restates historical prices to account for cash dividends, stock splits, rights issues, and other corporate actions — so that a return figure reflects actual investor economics rather than mechanical price discontinuities caused by corporate events.
+
+    The adjustment convention is stated explicitly on every return chart and portfolio analysis. The raw (unadjusted) close price and the adjustment factor are both available in the underlying data, so you can verify how the adjustment was applied for any specific corporate action.
+  </Accordion>
+
+  <Accordion title="Can I import holdings from my brokerage?">
+    Dassai offers an optional **read-only import** feature that lets you upload a snapshot of your holdings for reference context. This is a one-time or manual import — Dassai does not connect to any brokerage account, does not store brokerage credentials, and does not maintain a live sync with any account.
+
+    Imported holdings are kept separate from Research Portfolios and are never labeled as authoritative account balances. Any analysis performed against imported holdings carries the same simulation disclosure as Research Portfolios — the calculations use adjusted prices and research weights, not actual trade records, cash flows, or transaction costs.
+  </Accordion>
+</AccordionGroup>
+
+## Research Workbenches
+
+<AccordionGroup>
+  <Accordion title="How often do workbenches update?">
+    The **data layer** of a Research Workbench updates automatically as Dassai's data pipeline captures new market values, financial filings, and announcements. You will see updated figures and freshness indicators the next time you open the workbench, without any action required.
+
+    The **content and structure** of a workbench — including its saved analysis components, recorded premises, and organizational layout — only changes when you explicitly confirm an update. Dassai will not silently rewrite research you have already saved. When new evidence arrives that is relevant to a workbench, Dassai surfaces it in your Notifications rather than modifying the workbench in the background.
+  </Accordion>
+
+  <Accordion title="Can I share a workbench with others?">
+    Research Workbenches are private to your account. There are no public profiles, shared portfolios, or social feeds in Dassai. Workbench sharing features are planned for future versions.
+
+    Your conversations, premises, research dispositions, and workbench contents are visible only to you.
+  </Accordion>
+
+  <Accordion title="What happens to my workbench if the underlying data changes?">
+    When data that your workbench depends on changes — for example, a company releases a new earnings report, or an announcement is filed that relates to one of your recorded premises — Dassai creates a notification in the **Notifications** surface. The notification identifies the affected security or premise, describes the new fact, and links to its source.
+
+    You review the new evidence and decide what to do: keep your existing view, update your premises, continue researching, or wait for more information. The workbench itself does not change until you act. Prior versions of your analysis remain accessible in History so you can see how your reasoning evolved.
+  </Accordion>
+
+  <Accordion title="How do I delete a workbench?">
+    Open the workbench you want to remove and use the workbench management menu (accessible from the workbench header). You can archive a workbench to keep it accessible in History without it appearing in your active workspace, or you can delete it permanently.
+
+    Deleting a workbench removes its saved components and structure, but does not delete the underlying conversation history or source snapshots those components were derived from. Those remain accessible in the History surface.
+  </Accordion>
+</AccordionGroup>
+
+## Judgment Premises
+
+<AccordionGroup>
+  <Accordion title="What is a judgment premise?">
+    A **Judgment Premise (判断前提)** is a statement of the reasoning behind one of your investment views — a proposition that your current thinking depends on, and that can be supported, weakened, or contradicted by evidence.
+
+    For example: "贵州茅台的高端白酒定价权在未来两年内保持稳定" is a premise. Once you confirm it, Dassai monitors for evidence that is relevant to that premise and alerts you when something changes. Premises are the connective tissue between raw data and your research decisions.
+
+    For a full explanation of how premises work inside Research Workbenches, see the [Judgment Premises](/concepts/judgment-premises) concept page.
+  </Accordion>
+
+  <Accordion title="Can Dassai update my judgment premises automatically?">
+    No. Only you can confirm, modify, or close a Judgment Premise. Dassai can draft a proposed premise update based on new evidence — for example, after a significant earnings announcement — but that draft is presented for your review and is never applied without your explicit confirmation.
+
+    Confirmed premise versions are immutable once saved. A "keep existing judgment" decision after a review does not create a new version; a genuine change to the premise text does. Your Research Disposition — the choice you make at the end of each review — is always final and is never silently overwritten.
+  </Accordion>
+
+  <Accordion title="How do I know when a review is triggered?">
+    When Dassai detects new evidence that is relevant to one of your confirmed premises, it creates a **Pending Review (待复核项)** item in the **Notifications** surface. Open Notifications and look at the **Pending Review** tab to see all active review items.
+
+    Each pending review item identifies the affected premise, the triggering evidence, the source of that evidence, and its timestamp. Multiple pieces of evidence from the same event may be aggregated into a single review item so that your notification list remains manageable.
+  </Accordion>
+
+  <Accordion title="What if I disagree with the evidence assessment?">
+    Dassai's assessment of whether a piece of evidence supports or challenges a premise is a starting point for your review, not a conclusion. You can override any evidence assessment during the review process.
+
+    After reviewing the evidence, your options are:
+
+    - **Keep** — maintain your existing premise and judgment unchanged
+    - **Adjust** — update the premise text or your judgment to reflect the new evidence
+    - **Continue researching** — flag that you need more information before deciding
+    - **Wait** — acknowledge the evidence but defer a decision
+
+    Whichever option you choose, your **Research Disposition** is recorded as the authoritative outcome of that review. It cannot be overwritten by subsequent AI drafts or automated processes.
+  </Accordion>
+</AccordionGroup>
+
+## Compliance
+
+<AccordionGroup>
+  <Accordion title="Will Dassai tell me whether to buy or sell?">
+    No. Dassai does not issue buy, sell, or hold recommendations of any kind — personalized or general. This is not a product limitation that will be lifted in a future version; it is a permanent design boundary.
+
+    When you ask a question with a trading intent — "能买吗？", "该加仓吗？", "目标价多少？" — Dassai redirects to the research work that would actually inform that decision: valuation analysis, fundamental review, recent disclosure inspection, downside scenario, and evidence against your existing premises. The redirect produces actionable research; it is not a refusal.
+
+    The **Trade** navigation item in Dassai's sidebar is intentionally visible but locked. Opening it shows a clear explanation of what trading capabilities are not available and provides links to the pre-trade research alternatives you can use instead. See [Compliance Boundaries](/reference/compliance-boundaries) for the full list of permanently out-of-scope capabilities.
+  </Accordion>
+
+  <Accordion title="Is my research data private?">
+    Yes. All of your research data in Dassai — including conversations, saved Research Workbenches, Judgment Premises, research dispositions, watchlists, Research Portfolios, and notification history — is private to your account.
+
+    Dassai has no social sharing features, public profiles, or community feeds. There is no mechanism for another user to view your research, and Dassai does not use your research content to generate recommendations for other users.
+  </Accordion>
+
+  <Accordion title="What are the prohibited language guardrails?">
+    Dassai runs a product-wide check that blocks specific categories of advisory and execution language from appearing in any AI-generated output. The blocked categories include:
+
+    - **Directional recommendations** — phrases equivalent to "买入推荐" (buy recommendation), "卖出推荐" (sell recommendation), or "建议买入/卖出"
+    - **Guaranteed-return language** — phrases equivalent to "稳赚" (sure profit) or "必涨" (guaranteed to rise)
+    - **Timing and sizing instructions** — language that specifies when to enter or exit a position, or how much to allocate
+    - **Target prices** — specific price targets for any security
+
+    These guardrails apply to generated narrative. They do not apply to clearly labeled quotations from external source documents, where such language may appear in its original context with explicit source attribution. If you encounter any of this language outside a labeled quotation in a Dassai-generated response, use the feedback control on that answer to report it.
+  </Accordion>
+</AccordionGroup>

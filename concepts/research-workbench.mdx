@@ -1,0 +1,110 @@
+---
+title: "Research Workbenches: Your Personal Investment Analysis Hub"
+sidebarTitle: "Research Workbench"
+description: "A Research Workbench is Dassai's persistent, interactive space for organizing facts, sources, judgment premises, and analysis around a company or investment theme."
+---
+
+A Research Workbench (研究工作区) is the central organizing unit in Dassai — a private container that continuously saves everything you have learned about a company, ETF, or investment theme in one place. Unlike a one-off conversation that disappears once you close the tab, a workbench persists across sessions, accumulates evidence over time, and surfaces new developments the moment they touch your confirmed premises. Every chart, data binding, judgment premise, watch condition, and source snapshot you build up lives inside the workbench, so your research grows richer with each visit rather than starting from scratch.
+
+## What a workbench contains
+
+Every workbench is a living record of your research, not a static report. A workbench can hold any combination of the following:
+
+- **Saved conversation components** — interactive answer blocks from past questions, pinned to the workbench canvas so you can revisit them without rerunning the query
+- **Interactive charts and tables** — trend charts, financial summaries, screening results, and comparison tables that re-render against the latest data when you open the workbench
+- **Data bindings** — named metrics, periods, and calculation conventions that define what each chart means, including unit, currency, adjustment convention, and data cutoff
+- **Judgment premises (判断前提)** — the specific propositions your investment thesis depends on, each versioned and independently trackable
+- **Watch conditions (关注条件)** — monitorable conditions bound to individual judgment premise versions; Dassai flags you when a condition is met
+- **Current and alternative judgments** — the one adopted judgment chain that drives reviews, plus any alternative scenarios you are keeping for comparison
+- **Update history** — a full audit trail of every data refresh, evidence match, judgment version, and research disposition, so you can reconstruct your thinking at any point in time
+
+## Workbench vs. conversation
+
+<Tabs>
+  <Tab title="One-off conversation">
+    A conversation is the right tool when you have a single, self-contained question — "What was CATL's gross margin last quarter?" or "Screen for A-share companies with ROE above 20%." The Super Agent answers, cites its sources, and suggests follow-up questions. You can inspect every fact and drill down as far as you need.
+
+    - Best for ad hoc research and discovery
+    - Results are visible inside the Conversations surface
+    - No ongoing data binding — the answer reflects a point-in-time snapshot
+    - Nothing automatically updates or alerts you when facts change
+    - Useful starting point before you decide whether a company deserves a full workbench
+  </Tab>
+  <Tab title="Research Workbench">
+    A workbench is the right tool when you are tracking a company or theme over time and want your research to accumulate. You save the most useful conversation components to the workbench, confirm judgment premises, and let Dassai watch for evidence that touches your thesis.
+
+    - Persistent across sessions — survives browser closes, device switches, and re-logins
+    - Auto-updates the data layer on opening, so charts always reflect the latest available figures
+    - Alerts you when new evidence matches a confirmed judgment premise
+    - Tracks every version of your judgment and research disposition
+    - The right home for any investment you are actively following or hold in your research portfolio
+  </Tab>
+</Tabs>
+
+## How workbenches update
+
+Workbenches are designed to stay fresh without overwriting what you have confirmed. Updates happen in three distinct layers:
+
+**Data layer (automatic)**
+Market prices, financial ratios, disclosure event lists, and other bound metrics refresh automatically when you open the workbench or trigger a manual refresh. A freshness indicator on every block tells you exactly when the data was last captured. No calculation or chart updates silently — the timestamp always travels with the number.
+
+**Content layer (controlled)**
+AI-generated narrative blocks, summaries, and interpretation panels are not automatically rewritten. You decide when to regenerate a narrative against fresh data. This separation means your notes and confirmed reasoning are never silently overwritten by a new model run.
+
+**Structure layer (user-confirmed diff proposals)**
+When Dassai detects that new evidence materially affects a component — for example, a major earnings revision that would change a financial trend chart — it proposes a structural update and shows you a diff. You review the proposed change and confirm or reject it. Your confirmed judgment premises and research dispositions can only change when you explicitly adopt a new version; the AI never overwrites them.
+
+## Creating a workbench
+
+<Steps>
+  <Step title="Ask a research question">
+    Type a natural-language question in the global ask bar — for example, "分析一下宁德时代的盈利质量" — or select a company from your Investments sidebar first to anchor the context.
+  </Step>
+  <Step title="Review the Generative UI answer">
+    The Super Agent returns a structured answer composed of typed blocks: a conclusion summary, interactive charts and metric cards, and a sources panel. Each block is independently inspectable and citable.
+  </Step>
+  <Step title="Select components to save">
+    Hover over any block in the answer and click **Save to Workbench**. You can save one block, several, or the entire answer at once. Each saved component retains its data binding, source references, and calculation provenance.
+  </Step>
+  <Step title="Confirm the workbench">
+    Give the workbench a name — or accept the auto-generated one based on the company and question — and confirm. The workbench immediately appears in the left sidebar under **Research**.
+  </Step>
+  <Step title="Continue building">
+    Ask follow-up questions, save more components, and confirm judgment premises directly inside the workbench. Over time, the workbench becomes a durable, auditable record of your entire research thread.
+  </Step>
+</Steps>
+
+## 16 built-in workbench templates
+
+You do not have to build a workbench from a blank canvas. Dassai ships 16 templates organized into four groups. Each template pre-wires the most commonly needed components, data bindings, and judgment premise prompts for that research scenario — you fill in the target security or theme and the template does the rest.
+
+<CardGroup cols={2}>
+  <Card title="Information & Market" icon="newspaper">
+    - **Market Morning Brief** — A-share index performance, overnight developments, sector rotation, and disclosure highlights for the day
+    - **Announcement Monitor** — tracks official exchange announcements, inquiry replies, and performance forecasts for a set of securities
+    - **Theme / Sector Tracker** — maps a narrative theme to constituent companies, tracks the evidence supporting or challenging the narrative, and flags new developments
+    - **Watchlist Anomaly Radar** — surfaces unusual price moves, volume spikes, or disclosure events across your entire watchlist in one view
+  </Card>
+  <Card title="Individual Stock & ETF" icon="chart-line">
+    - **Stock Full Picture** — business overview, financial snapshot, valuation, recent disclosures, and key judgment premises in one canvas
+    - **Earnings Breakdown** — revenue drivers, margin analysis, expense structure, and period-over-period comparisons with source citations
+    - **Valuation & Expectation Gap** — current valuation multiples vs. historical range vs. consensus estimate, with calculation conventions exposed
+    - **ETF Deep Comparison** — tracks multiple ETFs side by side on holdings overlap, fee structure, tracking difference, and liquidity
+  </Card>
+  <Card title="Portfolio & Risk" icon="shield">
+    - **Portfolio Overview** — simulated research portfolio value, benchmark-relative return, and concentration heatmap
+    - **Return Attribution** — contribution breakdown by holding, sector, and period with the formula and data cutoff visible
+    - **Risk Exposure** — volatility, drawdown, beta, and Sharpe ratio for the research portfolio, with calculation window stated
+    - **Macro Scenario Lab** — models the impact of user-defined macro assumptions (interest rate, FX, commodity price) on portfolio exposures
+  </Card>
+  <Card title="Judgment & Output" icon="scale-balanced">
+    - **Multi-stock Comparison** — places two to five companies side by side on metrics you choose, without ranking or recommending
+    - **Judgment & Evidence Board** — structured view of all confirmed premises, evidence assessments, watch conditions, and review history for one security
+    - **Event Impact Review** — evaluates a specific disclosure or news event against all judgment premises in the relevant workbench
+    - **Research Brief Generator** — compiles your saved components, confirmed premises, and research dispositions into a structured personal research memo
+  </Card>
+</CardGroup>
+
+<Tip>
+  Starting from a template is the fastest path to a complete workbench — it pre-populates the most useful data bindings and suggests initial judgment premise prompts so you are not staring at an empty canvas. If your research need is more specific, build from a conversation instead: ask your question, save the components that matter, and the workbench will reflect exactly what you found rather than a generic template layout.
+</Tip>

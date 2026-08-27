@@ -1,0 +1,184 @@
+---
+title: "Review Your Investment Premises When Evidence Changes"
+sidebarTitle: "Judgment Review"
+description: "Learn how to create Judgment Premises in Dassai, set Watch Conditions, and review evidence-matched alerts to maintain or update your investment thesis."
+---
+
+Every investment decision rests on a set of propositions you believe to be true about a company or theme. A Judgment Premise makes those propositions explicit, verifiable, and monitorable. When new evidence emerges that bears on a confirmed premise — supporting it, weakening it, or directly contradicting it — Dassai surfaces a Pending Review and asks you to decide what to do. This closes the loop between research and conviction: instead of being overwhelmed by information, you only see the evidence that directly challenges something you have already committed to believing.
+
+The judgment review workflow is not automated. Dassai can match evidence to premises and surface the alert, but the decision — maintain, adjust, continue researching, wait, or close — always belongs to you. Your Research Disposition is saved permanently and cannot be overwritten by any subsequent AI analysis.
+
+## Create a Judgment Premise
+
+<Steps>
+  <Step title="Start a research conversation about a holding">
+    Open **Conversations** and ask a research question about a company you hold or are actively studying. Work through the conversation until you have a clear picture of the company's fundamentals, the key risks, and the factors that would change your view. You don't need to reach a final conclusion first — the process of articulating premises often clarifies your own thinking.
+  </Step>
+
+  <Step title="Ask the agent to help articulate your premises">
+    When you're ready to formalize your investment reasoning, ask Dassai directly:
+
+    ```text
+    帮我把对茅台的投资前提整理成可核查的命题
+    ```
+
+    Dassai will propose a set of premises derived from the evidence and conclusions in your conversation. Each proposed premise is written as a falsifiable proposition — a statement that could, in principle, be supported or contradicted by future evidence. For example:
+
+    > 贵州茅台的直销渠道占比将在未来两年持续提升，支撑吨酒价格上行。
+
+    > 公司自由现金流转化率保持在80%以上，体现高质量利润。
+
+    <Note>
+      Proposed premises are AI drafts. They are never automatically confirmed — you must review and explicitly confirm each one before it enters the judgment review loop.
+    </Note>
+  </Step>
+
+  <Step title="Review and edit the proposed premises">
+    Read each proposed premise carefully. Edit any that don't accurately capture your actual conviction — the premise text should reflect what *you* believe, not what the agent guessed you might believe. You can:
+
+    - Rephrase a premise to match the exact condition you care about
+    - Delete premises that don't reflect your investment thesis
+    - Add new premises the agent didn't propose
+    - Adjust the specificity of a condition (e.g., change "持续提升" to "每年提升超过5个百分点")
+
+    The more precise your premises, the more actionable the watch conditions you can build from them.
+  </Step>
+
+  <Step title="Confirm at least one premise">
+    Click **Confirm** on each premise you want to activate. Confirming a premise:
+
+    - Saves it as a **Judgment Premise** in your Research Workbench for this security
+    - Creates the first **Judgment Version** — a dated snapshot of the confirmed premise text
+    - Enables the judgment review loop: from this point on, Dassai can match new evidence to this premise and create Pending Reviews
+
+    You can confirm multiple premises for a single holding. Each confirmed premise is tracked independently.
+  </Step>
+
+  <Step title="The premise is saved to your Research Workbench">
+    Your confirmed premises appear in the **Judgment Premises** section of the Research Workbench for this security. From the workbench, you can view all confirmed premises, their version histories, all watch conditions bound to each premise, and all past Review Dispositions — a complete audit trail of how your view has evolved over time.
+  </Step>
+</Steps>
+
+## Set a Watch Condition
+
+A watch condition is a monitorable condition bound to a specific confirmed premise version. It tells Dassai what data to check in order to detect evidence that could trigger a review.
+
+<Steps>
+  <Step title="Open a confirmed judgment premise">
+    Navigate to your Research Workbench and click on the premise you want to monitor. You can only add watch conditions to premises that have been explicitly confirmed — AI drafts cannot have watch conditions.
+  </Step>
+
+  <Step title="Click 'Add Watch Condition'">
+    Click **Add Watch Condition** in the premise panel. The watch condition input accepts plain language — describe the condition you want to monitor as a specific, observable metric change. For example:
+
+    ```text
+    毛利率连续两季度下降超过3个百分点
+    ```
+
+    ```text
+    直销渠道营收占比环比下降
+    ```
+
+    ```text
+    经营现金流净额同比下降超过20%
+    ```
+  </Step>
+
+  <Step title="Preview the structured condition">
+    Before confirming, Dassai shows you the condition translated into a structured monitoring rule:
+
+    - **Object** — the security this condition applies to
+    - **Metric** — the specific data point being monitored (e.g., 毛利率)
+    - **Operator and threshold** — the condition that must be true to trigger a review (e.g., 连续两季度下降 > 3pp)
+    - **Evaluation frequency** — how often Dassai will check this condition (on refresh, daily, quarterly, etc.)
+    - **Limitations** — any known gaps in the monitoring coverage (e.g., "季报数据发布约滞后45天")
+
+    Review the preview carefully. If the structured rule doesn't match the condition you intended, edit the description and generate a new preview.
+  </Step>
+
+  <Step title="Confirm the condition">
+    Click **Confirm** to activate the watch condition. The condition is now:
+
+    - Active and bound to this specific version of your premise
+    - Listed in the **Watch Conditions** section of the premise panel
+    - Visible in the **Waiting for Data** tab of Notifications if its evaluation period hasn't completed yet
+
+    <Warning>
+      Watch conditions are never automatically activated from AI drafts — you must explicitly confirm each one. If you update the premise text and create a new Judgment Version, existing watch conditions are suspended and must be re-confirmed against the new version.
+    </Warning>
+  </Step>
+
+  <Step title="Condition is now active">
+    Dassai checks active watch conditions on manual refresh or app startup. When the monitored metric crosses the threshold you defined, the system creates a **Review Trigger**, which aggregates into a **Pending Review** item in your Notifications. You will see the notification next time you open or refresh the app.
+  </Step>
+</Steps>
+
+## Handling a Pending Review
+
+When Dassai has matched evidence to one of your confirmed premises, a Pending Review item appears in the **Notifications** surface. Work through the review in a structured way to arrive at a defensible Research Disposition.
+
+<Steps>
+  <Step title="Open Notifications → Pending Review tab">
+    Navigate to **Notifications** in the left sidebar and click the **Pending Review** tab. Each item in this tab represents at least one Review Trigger — an event where the system detected that new evidence matched a confirmed premise.
+
+    Items are sorted by recency by default. A single market event (e.g., a quarterly earnings release) may produce multiple triggers if several of your watch conditions fired at the same time; these are aggregated into a single Pending Review item.
+  </Step>
+
+  <Step title="Click a review item to see the triggering evidence">
+    Click any Pending Review item to open the review panel. The panel shows:
+
+    - The **triggering condition** that fired — the exact watch condition and the threshold that was crossed
+    - The **affected object** — the security or theme the evidence relates to
+    - The **detected fact** — the specific, citable data point or event that triggered the review, with its data timestamp and period
+    - The **source snapshot** — provider, document title, publication date, and Dassai's capture timestamp
+  </Step>
+
+  <Step title="Read the evidence fact and its source">
+    Click the source reference to open the **source drawer** and verify the evidence independently. The drawer shows the original document location, the specific passage or data table the fact was drawn from, and the full provenance chain.
+
+    If multiple facts triggered the same review, they are listed in order of assessed materiality. Review each one before making your disposition decision.
+  </Step>
+
+  <Step title="Review the impact assessment">
+    Below the evidence, Dassai provides an **impact assessment** — a structured evaluation of how this evidence relates to your confirmed premise. The assessment classifies the relationship as one of:
+
+    | Classification | Meaning |
+    |---|---|
+    | **Supports** | This evidence is consistent with your premise and strengthens it |
+    | **Weakens** | This evidence is in tension with your premise but does not falsify it |
+    | **Conflicts** | This evidence directly contradicts your premise |
+    | **Insufficient evidence** | The evidence is related but not strong enough to classify directionally |
+
+    The impact assessment is Dassai's analysis, not a recommendation. Use it as a starting point for your own judgment, not as the answer.
+  </Step>
+
+  <Step title="Choose your Research Disposition">
+    Select one of the five Research Disposition options based on your assessment of the evidence:
+
+    - **Maintain (保持)** — the premise still holds; no change needed
+    - **Adjust (调整)** — the premise needs updating based on this evidence; opens an editing flow
+    - **Continue Research (继续研究)** — more information is needed before deciding; flags for follow-up
+    - **Wait (等待)** — acknowledge the evidence but defer the decision; add a note explaining what you're waiting for
+    - **Close (关闭)** — the premise is no longer relevant; deactivates all bound watch conditions
+
+    <Note>
+      A "Maintain" decision does not create a new judgment version — the premise text is unchanged and the current version remains active. A new version is only created when you select "Adjust" and confirm the edited premise text.
+    </Note>
+  </Step>
+
+  <Step title="Add a note (optional but recommended)">
+    Use the note field to record your reasoning — why you interpreted the evidence the way you did, what you were considering when you chose this disposition, and what would change your view in the future. Notes attached to Research Dispositions become part of the permanent audit trail and are visible in the version history of the premise.
+
+    Strong notes typically capture: the key fact that drove your decision, the counterfactual you considered and rejected, and the conditions that would trigger a different disposition next time.
+  </Step>
+
+  <Step title="Submit your disposition">
+    Click **Submit**. Your Research Disposition is saved immediately and permanently. It:
+
+    - Moves the Pending Review to the **Handled** tab in Notifications
+    - Is recorded in the version history of the judgment premise
+    - **Cannot be overwritten** by any subsequent AI analysis or system update
+
+    If you selected "Adjust", you will be taken directly into the premise editing flow before the disposition is finalized. Confirm the edited premise text to complete the review.
+  </Step>
+</Steps>

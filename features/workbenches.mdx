@@ -1,0 +1,148 @@
+---
+title: "Research Workbenches: Build Your Personal Analysis System"
+sidebarTitle: "Workbenches"
+description: "Research Workbenches are persistent, auto-updating interactive dashboards you build by saving components from AI-powered conversations in Dassai."
+---
+
+A Research Workbench is a living dashboard you assemble from the best parts of your AI-powered conversations. Instead of re-asking the same questions every session, you save the charts, tables, metric cards, and scenario panels that matter to you into a named workbench that refreshes automatically as new data arrives. Over time, your workbenches become a personal research system — a set of curated, interactive views that reflect your specific holdings, watchlist, and investment reasoning rather than a generic market terminal.
+
+<Note>
+  All financial values displayed in a workbench — including prices, returns, valuation multiples, and financial metrics — show the unit, currency, reporting period, and a data freshness timestamp at the block level. A single global "as of" label is never sufficient; each component carries its own data cutoff.
+</Note>
+
+## What Makes a Workbench Different from a Conversation
+
+Conversations and workbenches serve different purposes in Dassai. Understanding the distinction helps you decide when to save.
+
+<Tabs>
+  <Tab title="Conversations">
+    - Created when you ask a question in the global ask bar
+    - Organized as a chronological thread of questions, answers, and follow-ups
+    - Answers are rendered once against the data available at the time of asking
+    - Historical questions use the original data snapshot by default; use **Rerun** to refresh
+    - Best for exploratory, one-time, or sequential research where context builds as you go
+    - Archived or renamed to keep your sidebar organized
+  </Tab>
+  <Tab title="Research Workbenches">
+    - Created by saving one or more components from a conversation answer
+    - Displayed as a persistent, named dashboard in the left sidebar
+    - Data refreshes automatically on each visit without re-asking the question
+    - Interactive: adjust filters, time ranges, and scenario parameters directly on the workbench
+    - Structural changes to a workbench are proposed as diffs requiring your confirmation before applying
+    - Best for views you return to regularly — portfolio overviews, ongoing company tracking, or recurring theme monitoring
+  </Tab>
+</Tabs>
+
+## Creating a Workbench from a Conversation
+
+The most common way to create a workbench is to save components from a conversation answer you find valuable.
+
+<Steps>
+  <Step title="Ask a research question">
+    Type your question in the global ask bar on the Dashboard or Conversations surface. Attach an investment context (a portfolio, holding, or watchlist item) using the Investments picker, and optionally select a task template from My Asks. Submit the question.
+  </Step>
+  <Step title="Review the answer components">
+    Dassai returns a structured answer with a conclusion layer, interactive components (charts, tables, metric cards, scenario panels), and an evidence layer with numbered citations. Browse the components and identify the ones you want to keep.
+  </Step>
+  <Step title="Select components to save">
+    Hover over any interactive component — a chart, data table, or metric card — and click the **Save to Workbench** icon that appears in the top-right corner of the component. A selection tray at the bottom of the screen shows all components you have selected. You can select components from multiple turns in the same conversation.
+  </Step>
+  <Step title="Name and confirm the workbench">
+    When you are satisfied with your selection, click **Create Workbench** in the selection tray. Enter a name for the workbench (for example, "宁德时代跟踪" or "新能源板块周报"), choose the update frequency, and confirm. Dassai validates the selected components and creates the workbench.
+  </Step>
+  <Step title="Find it in your sidebar">
+    The new workbench appears immediately in the left sidebar under **Workbenches**. Click it to open the interactive dashboard. The components are arranged in the order you selected them; you can reorder them by dragging.
+  </Step>
+</Steps>
+
+## Starting from a Template
+
+If you prefer a structured starting point rather than building from scratch, Dassai includes 16 built-in workbench templates organized into four categories. Select any template from the **New Workbench** dialog and Dassai will prompt you to specify the securities, portfolio, or theme the workbench should focus on.
+
+<Accordion title="Information & Market">
+  Templates for monitoring broad market conditions and tracking news flows.
+
+  | Template | What it tracks |
+  |---|---|
+  | **Market Morning Brief** | Daily market summary: major index moves, sector rotation, overnight news, and macro data releases relevant to A shares |
+  | **Announcement Monitor** | Real-time feed of exchange disclosures and issuer filings for a selected set of securities, filtered by announcement type |
+  | **Theme / Sector Tracker** | Price performance, news flow, and key metrics for a chosen industry or investment theme |
+  | **Watchlist Anomaly Radar** | Flags unusual price moves, volume spikes, or disclosure events across all securities in your watchlist |
+</Accordion>
+
+<Accordion title="Individual Stock & ETF">
+  Templates for deep research on a specific company or fund.
+
+  | Template | What it tracks |
+  |---|---|
+  | **Stock Full Picture** | Business overview, key financials, price history, analyst estimates, major announcements, and open research questions for one A-share company |
+  | **Earnings Breakdown** | Revenue, profit, margin, and cash flow trends across reporting periods; compares results to prior guidance and market estimates |
+  | **Valuation & Expectation Gap** | Current valuation multiples plotted against historical ranges and peer group, with a visible calculation of implied expectations |
+  | **ETF Deep Comparison** | Side-by-side comparison of up to four ETFs: holdings overlap, tracking error, fee structure, liquidity, and historical return |
+</Accordion>
+
+<Accordion title="Portfolio & Risk">
+  Templates for analyzing a research portfolio's behavior and risk profile.
+
+  | Template | What it tracks |
+  |---|---|
+  | **Portfolio Overview** | Simulated research portfolio value, benchmark-relative return, top movers, and sector allocation — labeled as a research simulation throughout |
+  | **Return Attribution** | Decomposes portfolio return into security selection, sector allocation, and benchmark contributions over a chosen period |
+  | **Risk Exposure** | Volatility, drawdown, beta, and Sharpe ratio for the portfolio and its benchmark; each metric shows its formula, sample window, and data cutoff |
+  | **Macro Scenario Lab** | Models how your portfolio's simulated return would differ under user-defined macro assumptions (for example, interest rate changes or sector rotation) |
+</Accordion>
+
+<Accordion title="Judgment & Output">
+  Templates for tracking your own research reasoning and generating shareable outputs.
+
+  | Template | What it tracks |
+  |---|---|
+  | **Multi-stock Comparison** | Side-by-side fact comparison across up to eight securities: financials, valuation, price history, and key events |
+  | **Judgment & Evidence Board** | Displays your confirmed judgment premises for a security alongside supporting and challenging evidence facts, linked to source snapshots |
+  | **Event Impact Review** | Traces the before-and-after effect of a specific corporate event (earnings release, regulatory change, management update) on your research positions |
+  | **Research Brief Generator** | Assembles a structured research summary from selected workbench components, conversation threads, and evidence citations; labeled as research reference, not investment advice |
+</Accordion>
+
+## Managing Workbench Updates
+
+A workbench stays current through three distinct update layers, each with different behavior:
+
+<CardGroup cols={3}>
+  <Card title="Data Refresh" icon="rotate">
+    Underlying data — prices, financials, announcements, index levels — refreshes automatically each time you open the workbench or click **Refresh**. You do not need to re-ask any questions. Each component shows its own data freshness timestamp so you can see exactly how current each piece of information is.
+  </Card>
+  <Card title="Content Updates" icon="sliders">
+    The logic that drives each component — the metrics, filters, time ranges, and scenario parameters — is under your control. You can adjust these directly on the workbench without going back to a conversation. Changes take effect immediately and are saved to the workbench configuration.
+  </Card>
+  <Card title="Structural Changes" icon="code-compare">
+    When Dassai detects that new information or a follow-up conversation suggests a material structural improvement to the workbench — for example, a new relevant metric or a changed formula — it proposes the change as a diff view. You review what would be added, modified, or removed, and confirm or reject each change. Structural changes never apply silently.
+  </Card>
+</CardGroup>
+
+## The Inbox
+
+When data refreshes and a change in your workbench matches one of your confirmed judgment premises, Dassai creates a notification in your Inbox (the Notifications surface). The notification:
+
+- Names the judgment premise that was affected
+- Describes the new evidence fact and its source
+- Links directly back to the workbench component where the change is visible
+- Shows whether the evidence supports, challenges, or is neutral to the premise
+
+If a single event — such as a quarterly earnings release — affects multiple workbenches simultaneously, Dassai aggregates all the impacts into a single Inbox item with an expand control. This prevents a single announcement from creating a flood of separate notifications.
+
+<Info>
+  Receiving an Inbox item does not automatically update your judgment or trigger any action. It creates a pending review task (待复核项) that you work through at your own pace. Read/unread state and review workflow status are tracked independently.
+</Info>
+
+## Workbench History
+
+Every workbench maintains a version history. To access it, open the workbench and select **History** from the workbench menu.
+
+- **Version list** — shows each saved version with a timestamp, a summary of what changed (data refresh, content update, or structural change), and the data cutoff for that snapshot.
+- **Replay a snapshot** — click any version to open a read-only replay of the workbench as it appeared at that point in time, using the original data snapshot. This is useful for reviewing what the workbench showed when you made a past research decision.
+- **Compare versions** — select two versions to see a side-by-side diff of component configuration and key metric values.
+- **Restore a version** — to revert the workbench to a past configuration, select the version and click **Restore**. The current version is preserved in history before the restore is applied.
+
+<Warning>
+  Replaying a historical snapshot uses the data that was captured at that time, not current data. To see how the same workbench configuration looks with today's data, open the live workbench and click **Refresh** rather than replaying a snapshot.
+</Warning>

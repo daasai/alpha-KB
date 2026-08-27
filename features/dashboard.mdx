@@ -1,0 +1,118 @@
+---
+title: "Dashboard: Your A-Share Research Starting Point"
+sidebarTitle: "Dashboard"
+description: "The Dassai Dashboard gives you an at-a-glance view of A-share market conditions, your research portfolio, watchlist, and recent alerts — all in one place."
+---
+
+The Dashboard is the first surface you see when you open Dassai and the natural starting point for every research session. It places your research portfolio and watchlist inside live A-share market context so that you can spot what has changed, ask why it matters, and move directly into evidence-backed investigation — all without leaving a single surface. Every component on the Dashboard doubles as a launchpad: click any index, holding, news headline, or alert to open a focused conversation or drill into detail.
+
+<Tip>
+  The Dashboard is the default landing surface each time you open Dassai. Your last active state is restored, so your most recent portfolio and watchlist context are always visible when you return.
+</Tip>
+
+## Market Strip
+
+The market strip runs across the top of the Dashboard and shows real-time price and change data for the four major A-share benchmarks:
+
+| Index | Chinese name | What it covers |
+|---|---|---|
+| SSE Composite | 上证指数 | All Shanghai-listed A shares and B shares |
+| SZSE Component | 深证成指 | 500 representative Shenzhen-listed stocks |
+| ChiNext | 创业板指 | Growth-oriented ChiNext board companies |
+| CSI 300 | 沪深300 | The 300 largest and most liquid A-share stocks |
+
+Each index tile shows the current level, the day's absolute change, and the percentage change. Color reinforces direction, but the numeric value always carries the same information so the strip is readable without relying on color alone. Click any tile to open a conversation pre-loaded with that index as context.
+
+<Info>
+  The strip also shows sector-level movement when sector data is available in your fixture or live data configuration. Sector tiles follow the same color-plus-text convention as index tiles.
+</Info>
+
+## Portfolio Summary Cards
+
+Below the market strip, Dassai displays summary cards for each of your named research portfolios. Each card shows:
+
+- Total simulated research value and day change (amount and percentage)
+- Performance relative to your chosen benchmark over the selected period
+- The benchmark name and evaluation period, stated explicitly on every card
+
+<Warning>
+  These cards represent **simulated research views based on manually entered positions and research weights**. They are not brokerage account balances, do not reflect actual trades, and exclude transaction costs, taxes, dividends beyond the adjusted-price convention, and cash flows. Never interpret them as your real account performance.
+</Warning>
+
+The disclosure label "研究模拟" appears on every portfolio card and cannot be dismissed. If you have not yet created a research portfolio, the card area shows an empty state — see [Empty State](#empty-state) below.
+
+## Holdings Heatmap
+
+The holdings heatmap gives you a visual overview of your simulated research positions. Each tile represents one holding:
+
+- **Tile area** is proportional to the security's simulated research weight in the portfolio — larger tiles indicate higher concentration.
+- **Color** indicates the direction and magnitude of the day's price change (green for gains, red for losses), but color is never the only signal. Each tile also shows the ticker code, short name, and the numeric price-change percentage so the map is fully readable without relying on color perception.
+- **Icon indicators** flag special states: suspended trading, limit-up, limit-down, or a pending judgment review for that security.
+
+Hover over any tile to see the full security name, today's open and close, the research weight percentage, and a link to open a research conversation. Click a tile to go directly to the security's research context.
+
+<Note>
+  The heatmap uses your research weights, not market-value weights derived from a live brokerage account. If you have not assigned explicit weights, Dassai distributes weight equally across all holdings and labels the heatmap "等权分配".
+</Note>
+
+## News and Announcements
+
+The news panel prioritizes high-trust primary sources over commentary. Sources appear in this order:
+
+1. **Exchange disclosures** — filings submitted directly to the Shanghai Stock Exchange (SSE) or Shenzhen Stock Exchange (SZSE), labeled with the exchange logo and an "交易所公告" badge.
+2. **Issuer filings** — periodic reports (年报, 半年报, 季报), performance forecasts (业绩预告), and board announcements published by listed companies.
+3. **Regulatory notices** — CSRC and exchange inquiry letters and responses.
+4. **Licensed research content** — where a valid entitlement exists, research summaries appear with a "研究报告" badge and a source attribution.
+5. **Secondary news** — commentary and aggregated news is visually differentiated with a lighter source badge and lower placement in the feed.
+
+Each item shows the source type badge, the issuer or publisher name, the publication timestamp, and the covered security or index. Click an item to open it in the Research surface with the document context preserved for follow-up questions.
+
+<Tip>
+  To filter the news panel to a specific security or theme, click any security chip in your portfolio cards or heatmap — the news panel will scope to that object automatically.
+</Tip>
+
+## Alerts Strip
+
+The alerts strip sits between the news panel and the suggestion chips. It surfaces the most recent unread alerts linked to your research objects or judgment premises. Each alert shows:
+
+- The triggering condition in plain language (for example, "营业收入同比下降 15% 已触发关注条件")
+- The affected security ticker and name, or the judgment premise title
+- The data source and detection timestamp
+- A status badge: unread, pending review, or handled
+
+Click any alert to open the full detail in the Notifications surface. If multiple alerts relate to the same underlying event — for example, a macro announcement that affects several holdings — they are aggregated into a single item with an expand control.
+
+<Info>
+  The alerts strip shows a maximum of five items. Open the Notifications surface to see the complete list, adjust alert settings, and manage review status independently from read/unread state.
+</Info>
+
+## Suggested Questions
+
+Dassai generates context-aware question suggestions based on the securities, portfolios, and watchlist items currently visible on your Dashboard. Suggestions appear as clickable chips and are refreshed when your object context changes.
+
+Examples of suggested questions you might see:
+
+- "宁德时代最新季报有哪些值得关注的变化？"
+- "沪深300近一个月跑输创业板指的原因是什么？"
+- "我组合中有哪些股票本周有重大公告？"
+
+Click any suggestion chip to open a new conversation with that question pre-filled and your current portfolio attached as context. You can edit the question before submitting. Suggestions are research starting points — they do not represent recommendations or implied views.
+
+<Note>
+  Suggestions are generated from your actual objects. If your portfolio or watchlist is empty, suggestions shift to onboarding prompts such as "用自然语言描述你关注的板块" to help you discover Dassai's capabilities.
+</Note>
+
+## Empty State
+
+If you have not yet added any securities to a research portfolio or watchlist, the Dashboard shows a guided empty state in place of the heatmap and portfolio cards. From the empty state you can:
+
+<CardGroup cols={2}>
+  <Card title="Add a Security" icon="plus">
+    Search for any A-share stock or ETF by name, six-digit code, or exchange-qualified code and add it to a new or existing research portfolio.
+  </Card>
+  <Card title="Start a Guided Search" icon="magnifying-glass">
+    Describe what you are looking for in natural Chinese — such as "高分红的银行股" — and let Dassai compile a screened list you can review and add to your watchlist.
+  </Card>
+</CardGroup>
+
+The empty state preserves the full Dashboard layout so the surface remains navigable. The market strip, ask bar, and sidebar navigation are always available regardless of portfolio state.

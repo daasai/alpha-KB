@@ -1,0 +1,98 @@
+---
+title: "How to Conduct Your First A-Share Research in Dassai"
+sidebarTitle: "First Research"
+description: "Step-by-step guide to asking your first research question in Dassai, reading an evidence-backed answer, and understanding the source citations."
+---
+
+Dassai is designed to feel immediately useful the first time you open it — you don't need to learn a query language or build a dashboard before getting a real answer. This guide walks you through your first complete research session: choosing a question, submitting it, understanding the execution stages, and reading an evidence-backed answer with traceable sources. By the end you'll know how to ask meaningful follow-up questions and how to save a useful result for ongoing monitoring.
+
+<Steps>
+  <Step title="Open Conversations or use the Dashboard Ask bar">
+    Navigate to **Conversations** in the left sidebar, or use the global Ask bar at the bottom of the Dashboard. Both surfaces give you the same research input interface. The Conversations surface is better when you want to build a multi-turn research thread; the Dashboard Ask bar is useful for quick one-off questions when you can already see your portfolio context.
+  </Step>
+
+  <Step title="Type a research question in Chinese">
+    Enter your question in the input field. Dassai understands natural Chinese — you don't need to use structured syntax. For your first question, try something concrete with a defined scope:
+
+    ```text
+    贵州茅台（600519）近两年的营收增速和利润质量如何？
+    ```
+
+    <Tip>
+      You can identify a company by its full Chinese name, its 6-digit A-share code (e.g., `600519`), or an exchange-qualified code (e.g., `600519.SH`). All three formats resolve to the same canonical security. If you enter an ambiguous name that matches multiple listed companies, Dassai will pause and ask you to choose before proceeding.
+    </Tip>
+
+    Keep your first question specific. A question scoped to a single company and a defined time window runs faster and produces a more focused, verifiable answer than a broad thematic question.
+  </Step>
+
+  <Step title="Optionally attach investment context">
+    Before submitting, you can add explicit object context using the **Investments picker** to the left of the input field. Click the picker and choose a security from your Research Portfolio or Watchlist.
+
+    Attaching context tells Dassai exactly which object your question is about and makes the selected object visible as a chip in the input bar. If you've already included the company name or code in your question text, attaching context is optional — but it's useful when you want your question to be scoped to a specific portfolio position.
+
+    Selected context chips are removable: click the × on any chip to remove it before submitting.
+  </Step>
+
+  <Step title="Submit and watch the execution stages">
+    Press **Enter** or click the submit button. Dassai runs the question through a series of execution stages, each displayed in real time so you can see exactly what the system is doing:
+
+    | Stage | What it means |
+    |---|---|
+    | **Queued** | Your request is accepted and waiting to start |
+    | **Planning** | The agent is interpreting your question and building a structured research plan |
+    | **Resolving** | Securities, metrics, and data sources are being identified and verified |
+    | **Fetching** | Raw data is being retrieved from the relevant providers |
+    | **Calculating** | Deterministic computations are running (e.g., growth rates, margin ratios) |
+    | **Composing** | The answer is being assembled from verified facts and calculations |
+    | **Verifying** | Every numeric claim in the narrative is checked against the fact set before display |
+    | **Completed** | The full answer is ready |
+
+    If a stage encounters a recoverable error, Dassai shows the error and a **Retry** option. Retrying creates a linked attempt and preserves the failed attempt for audit — your original question is never lost.
+
+    <Note>
+      If the agent cannot resolve your entity — for example, if you type a company name that matches two different listed companies — it will stop at the **Resolving** stage and present you with a disambiguation prompt. Choose the correct security to continue. Dassai will never silently use the wrong company.
+    </Note>
+  </Step>
+
+  <Step title="Read the answer">
+    A completed answer has three layers. Understanding each layer helps you judge how much to rely on specific claims:
+
+    **Conclusion layer** — a concise narrative summary of the key findings. Every material numeric claim in the narrative carries a superscript citation number, for example ¹. Claims labeled as interpretation are distinguished from those backed by deterministic calculations.
+
+    **Interactive layer** — metric cards, trend charts, and comparison tables that let you inspect the data directly. These are not decorative — the numbers in the charts are the same deterministic values the narrative is citing.
+
+    **Evidence layer** — numbered source references at the bottom of the answer. Click any citation number to expand the **source drawer**, which shows:
+    - Provider name and source type
+    - Document title and publication time
+    - Data capture timestamp (the time Dassai fetched the source)
+    - Original source location or document identifier
+
+    Every value displayed has a traceable path back to a source or a formula. If a data point was unavailable, stale, or permission-restricted, the answer will explicitly flag it rather than substitute a plausible value.
+  </Step>
+
+  <Step title="Interact with the answer components">
+    The interactive components in an answer are live and adjustable:
+
+    - **Charts** — change the time window, toggle between adjusted and unadjusted prices, or hover for exact values at a given period
+    - **Tables** — sort by any column, filter by keyword, or hide columns you don't need
+    - **Metric cards** — click any metric card to see its full definition: formula, calculation period, adjustment convention, unit, and data cutoff date
+
+    Adjustments you make to components apply only to this view and don't modify the underlying answer. The original answer remains intact if you close and reopen the conversation.
+  </Step>
+
+  <Step title="Ask a follow-up question">
+    Use the input field at the bottom of the conversation to continue the research thread. Follow-up questions inherit the entity context from the previous turn — you don't need to repeat the company name. For example:
+
+    ```text
+    这个增速与同行相比如何？
+    ```
+
+    Dassai will interpret "这个增速" as referring to the revenue growth rate from your previous question and "同行" as the relevant peer group for 贵州茅台. Follow-up context inheritance is thread-scoped: starting a new conversation clears the inherited context so you never accidentally carry analysis from one company into a question about another.
+
+    Use the suggested follow-up chips that appear below the answer for one-click continuation — these are pre-scoped to the current entities and commonly useful next steps.
+  </Step>
+</Steps>
+
+<Tip>
+  Once you have a useful answer, the natural next step is to save the key components as a persistent Research Workbench. A workbench lets the same metrics auto-update over time without you having to re-ask. See the [Building a Research Workbench](/guides/building-a-workbench) guide to learn how.
+</Tip>

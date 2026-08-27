@@ -1,0 +1,116 @@
+---
+title: "Build a Research Workbench from a Conversation"
+sidebarTitle: "Build a Workbench"
+description: "Learn how to turn a Dassai conversation answer into a persistent, auto-updating Research Workbench that tracks your key metrics over time."
+---
+
+A Research Workbench is a private, persistent container for everything you've established about a company or research question: facts, sources, saved components, judgment premises, and review history. When you save answer components from a conversation into a workbench, those components stay live — they update from the same data sources on a schedule you control, so the metrics you care about are always in front of you without re-asking.
+
+This guide shows you how to build a workbench from a conversation answer. If you haven't run a research conversation yet, start with the [First Research](/guides/first-research) guide first.
+
+<Tip>
+  Start with 3–5 components when creating a new workbench. A focused workbench is easier to interpret at a glance, and you can always add more components later as your research deepens.
+</Tip>
+
+<Steps>
+  <Step title="Ask a research question and get an answer">
+    Open **Conversations** and run a research question about the company or theme you want to monitor. For example:
+
+    ```text
+    贵州茅台（600519）近三年的毛利率趋势和经营现金流质量如何？
+    ```
+
+    Wait for the answer to complete. You need a finished answer — including interactive components — before you can select components to save. See the [First Research](/guides/first-research) guide if you need help getting to this point.
+  </Step>
+
+  <Step title="Identify the components you want to save">
+    Review the answer and decide which output components are worth monitoring over time. Dassai answers can include several component types:
+
+    - **Metric cards** — a single KPI with its value, period, unit, and data source (e.g., 毛利率 75.3%, FY2023)
+    - **Trend charts** — time-series visualizations of a metric over multiple periods
+    - **Comparison tables** — side-by-side data for multiple companies or periods
+    - **Evidence matrices** — structured fact-and-source grids showing which facts support which claims
+
+    Not every component needs to go into a workbench. Focus on the metrics that are most central to your investment premise for this holding.
+  </Step>
+
+  <Step title="Select components from the answer">
+    Hover over any component in the answer to reveal the **selection checkbox** in its top-left corner. Check the components you want to include. Selected components are highlighted with a border and listed in the save panel that slides in from the right.
+
+    You can select components from multiple turns in the same conversation — scroll up through the thread and add earlier components to the same save panel.
+  </Step>
+
+  <Step title="Create a new workbench">
+    In the save panel, click **Save to Workbench** → **New Workbench**. Enter a descriptive name that captures the focus of the workbench. Use the company name and the research focus, for example:
+
+    ```text
+    茅台基本面监测台
+    ```
+
+    Click **Confirm**. Dassai creates the workbench and copies the selected components into it, preserving the current data snapshot as the baseline.
+  </Step>
+
+  <Step title="Configure update frequency">
+    Choose how often the workbench components should refresh their data:
+
+    | Option | Behavior |
+    |---|---|
+    | **Manual refresh** | Components update only when you click Refresh on the workbench. Use this when you want full control over when data changes. |
+    | **On app startup** | Components refresh each time you open Dassai. Useful for workbenches you check daily. |
+    | **Scheduled** | Components refresh on a schedule you define (daily, weekly, or at a specific time). Not available for all data source types — the system will inform you if a component can't support your chosen schedule. |
+
+    You can set different frequencies for individual components within the same workbench if their data sources have different natural refresh cycles — for example, daily price data vs. quarterly financial statements.
+  </Step>
+
+  <Step title="Confirm data bindings">
+    Before the workbench is saved, Dassai shows you a **data bindings review**: a list of every data source feeding each component, the data provider, and the refresh permissions required. Review this list to confirm:
+
+    - The sources are the ones you expect
+    - The data coverage period matches your research scope
+    - You are comfortable with the data freshness for each component
+
+    Click **Authorize and Save** to confirm long-term data access for these components. This authorization can be reviewed and revoked from workbench settings at any time.
+  </Step>
+
+  <Step title="Access your new workbench from the sidebar">
+    Your workbench now appears in the **left sidebar** under Research Workbenches. Click it at any time to open the live view. Components display their most recently fetched values alongside the data cutoff timestamp so you always know the data vintage you're looking at.
+
+    From the workbench, you can open any component's source drawer, drill into calculation details, or launch a new conversation from the same entity context.
+  </Step>
+</Steps>
+
+## Adding to an Existing Workbench
+
+You don't need to create a new workbench every time you find a useful component. Add new components to an existing workbench at any time.
+
+1. Run a research conversation and identify the component you want to add
+2. Check the component's selection checkbox and open the save panel
+3. Click **Save to Workbench** → **Add to Existing**
+4. Choose the target workbench from the list
+5. Review the placement — new components are added to the end of the workbench by default; you can drag them into position after saving
+6. Click **Confirm** — the component is live in the workbench immediately
+
+## Starting from a Template
+
+If you don't have a conversation to start from, Dassai's workbench templates let you spin up a pre-structured monitoring setup and then fill in your security.
+
+1. From the sidebar, click **New Workbench** → **Start from Template**
+2. Browse the template gallery — templates are organized by use case, such as "个股基本面监测", "行业比较", or "投资组合跟踪"
+3. Select a template and click **Configure**
+4. Set the required parameters — typically the target security, benchmark, and time window
+5. Review the proposed components and remove any you don't need
+6. Click **Confirm** — Dassai creates the workbench and runs an initial data fetch
+
+Templates are starting points, not fixed structures. After creation, you can add, remove, and rearrange components exactly as you would with any workbench.
+
+## Workbench Structure Changes
+
+As your research evolves, you may want to restructure a workbench — rename sections, reorder components, or replace a chart with a different metric. Dassai handles these changes through an explicit review step.
+
+When you or the agent proposes a structural change to a workbench, Dassai presents the change as a **diff**: a before-and-after view showing exactly what will be added, removed, or rearranged. You must confirm the diff before it takes effect. This ensures:
+
+- No component is silently replaced by an updated AI analysis
+- Your confirmed judgment premises and research dispositions remain attached to the correct components
+- The version history of the workbench remains traceable
+
+To propose a change yourself, click **Edit Structure** in the workbench header. To accept or reject a change proposed by the agent, use the diff review panel that appears when the agent suggests a structural update.

@@ -1,0 +1,69 @@
+---
+title: "Compliance Boundaries: What Dassai Does and Doesn't Do"
+sidebarTitle: "Compliance"
+description: "Dassai is a research and analysis tool, not an investment advisor or trading platform. Understand what Dassai will and will not do to ensure you use it appropriately."
+---
+
+Dassai is a research workbench — nothing more, and nothing less. Every output it produces, from AI-generated narrative to deterministic portfolio calculations, is provided for informational and research purposes only. Dassai does not hold a securities advisory license, does not manage money, and has no connection to any brokerage or trading infrastructure. Before you build any investment view using Dassai, understand the boundaries below so you can use the platform in the way it was designed.
+
+## What Dassai Does
+
+Dassai exists to help you conduct rigorous, evidence-backed research on A-share securities at a depth that would otherwise require stitching together a dozen disconnected tools. Specifically, Dassai:
+
+- Provides verifiable, source-backed research on A-share companies, ETFs, and themes — every claim traces back to a timestamped source you can inspect
+- Helps you organize and track your own investment premises and reasoning inside persistent Research Workbenches
+- Presents evidence that supports or challenges your recorded premises, and surfaces that evidence when it becomes relevant
+- Calculates portfolio metrics — including historical replay, benchmark comparison, drawdown, volatility, beta, and Sharpe ratio — as research aids with explicit formulas and calculation boundaries disclosed
+- Screens securities against criteria you define in natural language, compiling those criteria into a visible, editable filter model
+- Lets you record your research dispositions and review history over time, so prior reasoning is never silently overwritten
+
+## What Dassai Will Never Do
+
+<Warning>
+  The following capabilities are permanently out of scope. No feature, prompt, or workflow in Dassai will produce these outputs. If you encounter language in any Dassai response that appears to cross these lines, use the feedback control on that answer to report it.
+
+  - Issue personalized buy, sell, or hold recommendations for any security
+  - Provide target prices or price targets of any kind
+  - Give position sizing, entry timing, or exit timing advice
+  - Connect to brokerage accounts or execute trades on your behalf
+  - Transfer funds or aggregate real brokerage account balances
+  - Make investment decisions on your behalf — including auto-trading, copy-trading, or automatic rebalancing
+  - Present simulated research portfolio performance as real account performance
+  - Use language such as "稳赚", "必涨", "买入推荐", or "卖出推荐" — these phrases are blocked at the system level across all generated outputs
+</Warning>
+
+## The Trade Boundary Page
+
+The **Trade** item remains visible in Dassai's main navigation. This is intentional. Keeping the navigation item visible — and locking it — communicates the product boundary clearly: you can see where a trading capability would live, and you can confirm for yourself that it is not there.
+
+When you open the Trade page, you will find:
+
+- A concise explanation of what order entry, broker connection, cash transfer, and execution capabilities are unavailable and why
+- Research-safe alternatives you can pursue immediately — liquidity check, valuation comparison, disclosure review, and downside scenario analysis
+- Links back to the Investments, Search, and Research surfaces where the pre-trade work actually happens
+
+There are no order-side selectors, quantity fields, price inputs, or submit buttons anywhere in Dassai. The Trade page cannot be mistaken for an order flow.
+
+## Trade Intent Redirection
+
+When you ask a question that carries a trading intent — for example:
+
+- "这只股票能买吗？"
+- "现在该加仓吗？"
+- "推荐三只值得关注的股票"
+- "现在是进场时机吗？"
+
+Dassai will not refuse and leave you stuck. Instead, it transforms the question into the research work that would actually support your thinking: valuation relative to history, fundamental condition, recent disclosures, downside scenarios, and evidence against your existing premises. The redirect is neutral — it does not imply a directional view — and it produces actionable research rather than a dead end.
+
+## Data Labeling and Answer Transparency
+
+Dassai treats the distinction between facts and interpretation as a hard technical requirement, not a disclaimer footnote.
+
+- **AI-generated narrative** is always labeled separately from deterministic calculations and sourced facts. You can tell, at a glance, which parts of an answer were produced by a language model and which parts came from a verifiable data record.
+- **Calculations** show their formula identifier, parameters, data period, unit, adjustment convention, and calculation version. Portfolio replay calculations carry a prominent disclosure that they represent a simulated research view — not actual account performance.
+- **Sources** show their provider, document type, publication timestamp, and data capture timestamp. A source that is unavailable, access-restricted, or stale is labeled explicitly — missing evidence is never presented as absent evidence.
+- **Data values** show unit, currency, reporting period, and a freshness indicator at the block level. A single global "data as of" label is not sufficient, and Dassai does not use one.
+
+<Note>
+  Dassai is a research tool, not a licensed investment advisor. If you require personalized investment advice tailored to your financial situation, consult a qualified and licensed investment advisor.
+</Note>

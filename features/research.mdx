@@ -1,0 +1,88 @@
+---
+title: "Research: Explore Official Announcements and Financial Reports"
+sidebarTitle: "Research"
+description: "The Research surface in Dassai aggregates official A-share exchange announcements, financial reports, performance forecasts, and licensed research samples for deeper study."
+---
+
+The Research surface is your primary access point for authoritative, traceable primary sources on A-share companies. Rather than synthesizing everything into a single stream, Dassai surfaces individual documents — official exchange announcements, periodic financial reports, earnings pre-announcements, regulatory inquiry replies, and licensed research excerpts — as distinct research objects you can read, interrogate, and use as the grounding for further questions. Every card you see here represents a real document with a verifiable origin, a publication date, and a defined scope of coverage. The goal is to give you the confidence to trace every research claim back to its source.
+
+## Content types
+
+Research cards are sorted and labeled by source type. Each type has a different authority level, update cadence, and appropriate use in research.
+
+| Source Type | Chinese Term | Description |
+|---|---|---|
+| Official announcements | 交易所公告 | Filings submitted directly to the Shanghai Stock Exchange, Shenzhen Stock Exchange, or Beijing Stock Exchange. Covers major events, equity changes, connected transactions, and regulatory disclosures. |
+| Periodic reports | 定期报告 | Annual reports (年报), semi-annual reports (半年报), and quarterly reports (季报) containing audited or unaudited financial statements and management discussion. |
+| Performance forecasts | 业绩预告 | Earnings pre-announcements issued by listed companies ahead of formal periodic reports, indicating expected profit range or direction relative to the prior period. |
+| Exchange inquiry replies | 问询函回复 | Issuer responses to formal regulatory inquiry letters from the exchange, often addressing accounting treatments, unusual transactions, or disclosed risk items. |
+| Licensed research samples | 研究报告摘录 | Excerpts from research notes obtained under appropriate content licensing. Sample scope, coverage period, and access entitlement are labeled on each card. |
+
+<Note>
+  Official exchange announcements and issuer filings are always prioritized over secondary commentary in Dassai's research feed. Source types are visibly differentiated — the card header shows the source type label so you can assess authority at a glance before opening any document.
+</Note>
+
+## Research cards
+
+Each card in the Research surface represents a single document and displays the information you need to assess its relevance before opening it.
+
+Every research card shows:
+
+<ResponseField name="Source type" type="label">
+  The category of the document — official announcement, periodic report, performance forecast, exchange inquiry reply, or licensed research sample. Displayed as a colored tag on the card header.
+</ResponseField>
+
+<ResponseField name="Publication date" type="date">
+  The date the issuer or exchange published or filed the document. Displayed with the exact date, not a relative "X days ago" label that becomes ambiguous over time.
+</ResponseField>
+
+<ResponseField name="Access level" type="indicator">
+  Whether you can open and read the full document. Unlocked cards are fully accessible. Locked cards indicate a genuine entitlement restriction — either the source is behind a license that your current plan does not include, or the document's coverage is outside available data. Locked cards are never decorative; the card states specifically why access is unavailable.
+</ResponseField>
+
+<ResponseField name="Covered security" type="security reference">
+  The A-share security or securities the document primarily covers, shown as an exchange-qualified code and company name chip.
+</ResponseField>
+
+## Questions a document can answer
+
+Before you open a document, each research card advertises the research questions it is capable of supporting. These are not AI-generated summaries of the document's content — they are structured question templates derived from the document type, its coverage period, and the entities it references.
+
+Examples of advertised questions on a periodic report card:
+
+- 这份年报披露了哪些主要财务指标？
+- 毛利率与上年同期相比发生了什么变化？
+- 管理层如何描述当期经营压力？
+- 报告期内有哪些重大诉讼或或有负债？
+
+Click any advertised question to open a conversation scoped directly to that document. The question and document are loaded together as the starting context — you do not need to copy-paste or re-specify the security.
+
+## Document-scoped research
+
+When you start a conversation from a research document card, Dassai enters **document-scoped research mode**. In this mode:
+
+- Every answer cites only documents that are within the eligible source set for that research context — primarily the opened document plus explicitly disclosed supplementary data such as the relevant financial period's official figures
+- The system labels the source scope at the top of the conversation so you know exactly what evidence base the answers are drawn from
+- If a follow-up question requires data outside the scoped source set, Dassai says so explicitly rather than silently pulling in unrelated sources
+- Citations in document-scoped answers include the source locator — section, page, or paragraph reference — so you can navigate to the exact location in the original document
+
+This scoping approach preserves research integrity: the answer you get when asking about a specific annual report reflects only what that report says, not what a different quarter's report or a third-party commentary says. It prevents source contamination that would make citation chains impossible to audit.
+
+<Info>
+  You can widen the scope at any time by starting a new conversation without a document context, or by explicitly adding additional documents as sources within the same thread. Dassai will show the expanded source set as labeled chips in the conversation header.
+</Info>
+
+## Model-generated summaries
+
+Some research cards include an AI-generated summary panel below the document metadata. These summaries:
+
+- Are always labeled with a visible **AI Generated** tag — they are never presented as the issuer's own words
+- Are linked to the underlying source snapshot from which they were generated, with the snapshot's capture timestamp
+- Are not the primary document — the original filing or report remains the authoritative reference
+- Can be verified claim by claim: click any sentence in the summary to see the source excerpt it was derived from
+
+**Verifying a claim** — click the citation number next to any summary statement to open the source drawer. The source drawer shows the provider, document title, publication date, capture date, and the specific passage from the original document. You can use this to confirm that the summary accurately represents what the source says.
+
+<Note>
+  If the model-generated summary contains a numeric value — a revenue figure, a profit margin, a growth rate — that value is cross-checked against the deterministic fact set before display. Summaries that contain unsupported numeric claims are blocked from appearing; you will see a notice that the summary could not be verified rather than an unchecked figure presented as fact.
+</Note>

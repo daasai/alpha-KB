@@ -1,0 +1,83 @@
+---
+title: "Evidence and Sources: Verifiable Grounding for Every Answer"
+sidebarTitle: "Evidence & Sources"
+description: "Every Dassai answer links material claims to specific, verifiable source snapshots — so you always know where a fact came from and when it was captured."
+---
+
+Dassai is built around a single commitment: every material claim in an answer must be traceable to a specific, independently verifiable source. This is not a disclaimer — it is a design constraint enforced at the answer level. Before any answer reaches your screen, a verification step checks that every numeric value appearing in the narrative is present in a deterministic fact set. Claims that cannot be grounded are either removed, labeled explicitly as interpretation, or cause the answer to be marked partial rather than presented as complete. You should never have to wonder whether a number is a real figure or something the AI made up.
+
+## Source types
+
+Dassai draws on a defined set of source categories for A-share research. Each source type has different trust characteristics, update cadences, and access conditions — all of which are surfaced alongside the content.
+
+| Source Type | Description | Examples |
+|---|---|---|
+| **Official exchange announcements** (交易所公告) | Mandatory disclosures filed directly with the Shanghai or Shenzhen Stock Exchange by listed companies | Major asset acquisitions, shareholder change notifications, clarification announcements, risk warnings |
+| **Periodic financial reports** (定期报告) | Quarterly, semi-annual, and annual reports filed under CSRC requirements | Annual report (年报), semi-annual report (半年报), quarterly report (季报) |
+| **Performance forecasts** (业绩预告) | Forward-looking earnings guidance filed by listed companies ahead of periodic reports | Preliminary earnings estimates, profit warning announcements |
+| **Exchange inquiry replies** (问询函回复) | Company responses to formal regulatory questions from the exchange — often highly specific and disclosure-rich | Replies to accounting-treatment inquiries, related-party transaction clarifications |
+| **Licensed research samples** (研究样本) | Legally licensed research content used as reference material, subject to the entitlement rules of the relevant provider | Broker research samples, industry analysis excerpts where access rights have been established |
+| **Market data** (行情数据) | Price, volume, and index data from authorized market data providers | Daily close, adjusted close, index level, trading volume, turnover |
+
+## How sources are captured
+
+Every source in Dassai is stored as a snapshot at the moment it is accessed, not as a live link that may change or disappear. Each source snapshot contains the following fields:
+
+- **Provider name** — the organization that supplied the document or data feed
+- **Document title** — the official title of the filing, report, or data series
+- **Publication time** — the date and time the issuer released or filed the document
+- **Data capture time** — the date and time Dassai's data layer fetched and stored the snapshot
+- **Original location** — the canonical URL or exchange locator reference for the source document
+- **Access state** — one of three explicit states: **available** (readable and cited), **restricted** (exists but entitlement is insufficient), or **permission denied** (access was actively rejected by the provider)
+
+This snapshot model means that even if a source document is later amended, revised, or taken offline, the version your answer cited is still on record. You can always reconstruct exactly what evidence was visible at the time of any research action.
+
+## Evidence facts vs. AI interpretation
+
+Dassai distinguishes two types of content in every answer, and labels them differently:
+
+**Evidence facts (证据事实)** are locatable, independently verifiable data points taken directly from a source snapshot. A gross margin figure from a quarterly filing, a production volume figure from an annual report, a closing price from the exchange — these are evidence facts. They carry a citation number that links to the source drawer, where you can verify the provider, document, and capture time. The same evidence fact can appear in multiple answers and across multiple workbenches because it refers to a fixed, checkable reality.
+
+**AI interpretation** is narrative reasoning, synthesis, or inference that connects evidence facts into an argument. For example: "The sustained gross margin above 50% over the past three quarters, combined with the reduction in raw material costs disclosed in the most recent annual report, suggests that the company's pricing power has strengthened." This sentence is interpretation — it is the AI drawing a conclusion from two evidence facts. Interpretation blocks are labeled as such and are always linked to the specific evidence facts they reference. You are never expected to treat interpretation as a fact.
+
+If an AI narrative claim cannot be linked to at least one evidence fact or an explicit calculation, it is either removed by the verification step or flagged as unsupported and excluded from the answer. Partial answers (where some data was unavailable) are explicitly labeled **partial** — the missing parts are never silently replaced with plausible-sounding text.
+
+## Data freshness
+
+Every market or financial value in a Dassai answer carries four pieces of metadata alongside the number itself:
+
+- **Unit** — shares, yuan (CNY), percent, ratio, etc.
+- **Currency** — always explicit, never inferred
+- **Period** — the report period, trading date, or calculation window the value refers to
+- **Freshness indicator** — the data capture time, displayed at block level
+
+A single "latest data as of" timestamp at the top of a page is not sufficient — Dassai attaches freshness at the individual block level because different metrics in the same answer may have been captured at different times (for example, a quarterly financial figure and an intraday price quote).
+
+When data is stale beyond an acceptable threshold, or when a provider is temporarily unavailable, Dassai produces an explicit warning on the affected block. It does not substitute a last-known value silently, fill in a zero, or generate a plausible estimate. The warning tells you exactly which value is affected and why.
+
+## Source drawer
+
+Every citation in a Dassai answer is marked with a superscript reference number. To inspect a source:
+
+1. Click any citation number in the answer text, or click the **Sources** panel at the bottom of any answer block.
+2. The source drawer opens alongside the answer — your scroll position in the conversation does not change.
+3. The drawer lists every source snapshot referenced in the answer, with full metadata: provider, document title, publication time, capture time, original location, and access state.
+4. Click any source row to expand the full snapshot detail and, where access is available, navigate to the original document.
+
+The source drawer is available on every answer block in the Conversations surface, inside Research Workbenches, and within the Judgment Review flow when you are evaluating evidence against a premise.
+
+## Missing data states
+
+Dassai represents missing or unavailable data using three distinct states. None of them is coerced to zero, and none is presented as a normal value.
+
+| State | What it means | How it appears |
+|---|---|---|
+| **Missing** (缺失) | The data point is not available in the current provider dataset — it may never have been reported, or coverage for this security does not include this metric | An explicit "— (数据缺失)" indicator in the table cell or chart; a note on the block explaining what is absent |
+| **Not applicable** (不适用) | The metric genuinely does not apply to this security — for example, a P/E ratio for a company with negative earnings, or a sector-specific metric for a company outside that sector | An explicit "N/A (不适用)" indicator with a tooltip explaining why the metric does not apply |
+| **Permission denied** (权限不足) | The data exists in the provider's system, but your current entitlement level does not include access to it | A lock indicator and a brief explanation of which entitlement would be required to access the data |
+
+This three-way distinction matters in practice: if a gross margin figure is missing, you know the data gap is a coverage issue and can seek the information elsewhere. If it shows permission denied, you know the data exists and the path to accessing it. Conflating these states — or setting them all to zero — would make financial analysis silently misleading.
+
+<Note>
+  Dassai uses fixture data for product demonstrations, CI testing, and any user session before live market data is configured. Fixture data reproduces realistic A-share research scenarios but does not represent real-time or historical market prices. Live market data requires Tushare authorization in production environments. Every session running on fixture data displays a clear indicator so you always know which data mode is active.
+</Note>

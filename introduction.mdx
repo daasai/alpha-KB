@@ -1,0 +1,86 @@
+---
+title: "Dassai: AI-Native A-Share Research Workbench"
+sidebarTitle: "Introduction"
+description: "Learn what Dassai is, who it's designed for, and how it helps you build structured, evidence-backed A-share investment research."
+---
+
+Chinese A-share investors rarely suffer from a lack of information. Broker apps surface live quotes, financial news sites push disclosures, research platforms generate reports, and general-purpose AI can produce summaries on demand. The real problem is fragmentation: each tool answers a narrow slice of a research question, but none of them connect your specific holdings to a traceable chain of evidence, let you record the reasoning behind your views, or alert you when a new fact challenges what you believed last month. Dassai is built to close that gap — a single AI-native workbench where your research is verifiable, structured, and yours to revisit.
+
+## What Dassai does
+
+Dassai organizes A-share investment research into three reinforcing layers:
+
+**Individual stock deep research.** You can investigate any Shanghai or Shenzhen A-share as a business entity — not just a price chart. Dassai retrieves financial statements, official announcements, performance forecasts, and exchange disclosures, then presents each fact with its source, provider, publication date, and data capture timestamp. Every numeric claim is grounded in a deterministic calculation or an explicitly cited source value; the AI cannot fill gaps with plausible-sounding text.
+
+**Thematic and comparative analysis.** You can ask Dassai to map out a sector, compare multiple companies on specific metrics, or analyze why a theme is moving. Rather than returning a labelled stock list, Dassai breaks a theme into falsifiable cause-and-effect chains with evidence on both sides — so you can evaluate the narrative, not just receive it.
+
+**Judgment tracking and premise review.** Once you record a Judgment Premise — a statement of the reasoning behind an investment view, such as "茅台的高端白酒定价能力将在未来两年内保持稳定" — Dassai monitors for new facts that support, weaken, or contradict it. When evidence arrives that is material to your premise, Dassai surfaces a pending review item. You decide whether to maintain your view, adjust it, continue researching, or wait.
+
+## Who Dassai is for
+
+Dassai is designed for **self-directed research investors** — people who form their own investment views, want to understand the reasoning behind those views, and care about being able to verify and revisit the evidence later.
+
+You will find Dassai useful if you:
+
+- Follow a portfolio of A-share stocks or ETFs and want structured research to support your thinking
+- Ask questions like "this company's margins have changed — why, and does it matter for my thesis?"
+- Want AI assistance that cites sources rather than one that generates confident-sounding conclusions
+- Need to distinguish what you knew at the time of a decision from what you know now
+
+Dassai is **not** designed for passive investors who want automated recommendations, algorithmic traders seeking execution infrastructure, or anyone who wants the system to make portfolio decisions on their behalf.
+
+## What Dassai does NOT do
+
+<Warning>
+  Dassai is a research and analysis tool. It does not provide any of the following:
+
+  - **Buy or sell recommendations** — Dassai never tells you to buy, sell, hold, add to, or reduce a position.
+  - **Target prices or timing guidance** — No price targets, entry points, exit signals, or market-timing instructions are generated.
+  - **Trade execution** — There is no order entry, order preview, broker connection, or cash transfer capability of any kind.
+  - **Broker account aggregation** — Dassai does not connect to, read from, or manage any brokerage account.
+  - **Personalized portfolio advice** — Dassai does not construct, rebalance, or optimize portfolios on your behalf.
+  - **Guaranteed-return or performance claims** — Research portfolio simulations use stated assumptions and are clearly labeled as simulated, not actual account performance.
+
+  All information in Dassai is for research reference only, may be delayed or incomplete, and does not constitute investment advice.
+</Warning>
+
+## The 8 work surfaces
+
+Dassai organizes your research across eight primary surfaces accessible from the sidebar navigation:
+
+<CardGroup cols={2}>
+  <Card title="Dashboard" icon="house">
+    Your default landing surface. Shows A-share market context (major indices and sectors), your research portfolio summary, holdings heatmap, recent fact changes, disclosures, and suggested research questions based on your current holdings.
+  </Card>
+  <Card title="Conversations" icon="comments">
+    The AI research surface. Every question you ask creates or extends a conversation thread, with structured answers, numbered source citations, follow-up suggestions, and components you can save to a Workbench.
+  </Card>
+  <Card title="Notifications" icon="bell">
+    Alerts and pending judgment reviews. Notifications explain their triggering condition, the affected security or Judgment Premise, the detected fact, and the source — never a black-box signal.
+  </Card>
+  <Card title="Investments" icon="briefcase">
+    Manage your manual research portfolios and watchlists. Add A-share securities, assign research weights, and review simulated portfolio performance — clearly labeled as research views, not brokerage balances.
+  </Card>
+  <Card title="Research" icon="file-lines">
+    Aggregated official content: exchange announcements, periodic reports, performance forecasts, and exchange inquiries, organized by security. Open any document to ask follow-up questions scoped to that source.
+  </Card>
+  <Card title="Search" icon="magnifying-glass">
+    Natural-language discovery for A-share companies, ETFs, industries, and themes. Your plain-language criteria compile into visible, editable structured filters so you can verify exactly what was searched.
+  </Card>
+  <Card title="Trade Boundary" icon="ban">
+    A compliance boundary surface. Retains its place in the navigation to make the product's limits unambiguous. No order entry, price input, or execution controls exist here. Links to research-safe alternatives for pre-trade analysis.
+  </Card>
+  <Card title="History" icon="clock-rotate-left">
+    A full log of your conversations, searches, and analyses. Reopen any entry to see the original data snapshot, or explicitly rerun it against current data. Pin and filter entries to organize prior work.
+  </Card>
+</CardGroup>
+
+## Key concepts
+
+Several domain concepts are central to getting the most from Dassai. Understanding them will make the product's behavior — especially around alerts and judgment reviews — much clearer:
+
+- **Research Workbench** — a private container for saving facts, sources, Judgment Premises, and analysis components around a company or research question. See [Research Workbench](/concepts/research-workbench).
+- **Judgment Premise** — a statement you confirm as the basis of an investment view, which Dassai can then monitor for supporting or contradicting evidence. See [Judgment Premises](/concepts/judgment-premises).
+- **Fact Change** — a new, source-traceable fact linked to a security you follow, which has crossed a relevance threshold but has not yet been mapped to a Judgment Premise review. See [Notifications](/features/notifications).
+- **Judgment Review** — the process of evaluating new evidence against a confirmed Judgment Premise and recording your response: maintain, adjust, continue researching, or wait. See [Judgment Premises](/concepts/judgment-premises).
+- **First Activation** — the one-time setup step that enables Dassai to start monitoring your premises: confirming your holdings, saving a Workbench, and recording your first Judgment Premise. See [Account Setup](/account-setup).

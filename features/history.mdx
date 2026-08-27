@@ -1,0 +1,64 @@
+---
+title: "History: Revisit and Replay Your Past Research Sessions"
+sidebarTitle: "History"
+description: "Dassai History lets you revisit saved conversations, searches, and analyses with their original data snapshots — or rerun them with current market data."
+---
+
+Every research session you run in Dassai is preserved as a versioned, inspectable record. History is not a log of page visits — it captures the full substance of your research: the questions you asked, the evidence that answered them, the criteria that defined a screen, and the calculations that underpinned an analysis. When you return to a history item, you see the world as it was at the time you made your decision, which is often exactly what you need to understand why you made it.
+
+## What History Tracks
+
+<CardGroup cols={2}>
+  <Card title="Conversations" icon="message">
+    Complete research threads containing all your questions, the agent's answers, every source citation, and the interactive components — charts, tables, metric cards — generated during the session. Conversations are preserved as they were when you last viewed them, including partial results and any follow-up questions.
+  </Card>
+  <Card title="Searches" icon="magnifying-glass">
+    Saved screens with their compiled filter criteria and the result snapshot from when the search was run. Each saved search records the original natural-language query, the structured filter model Dassai derived from it, the sort order, visible columns, and the snapshot timestamp — so you can always see exactly what criteria produced which results.
+  </Card>
+  <Card title="Analyses" icon="chart-line">
+    Portfolio replays and standalone analyses, including the benchmark chosen, the time period, the weight inputs, and every calculated metric. The calculation parameters — formula, sample window, adjustment convention, data cutoff — are preserved alongside the result so you can reproduce or compare them later.
+  </Card>
+</CardGroup>
+
+<Info>
+  History distinguishes two types of records: conversation threads (questions, answers, and interactive components) and cross-product activity (searches, analyses, and other saved research). These are tracked and surfaced separately so each type remains easy to find.
+</Info>
+
+## Reopening a History Item
+
+When you reopen a past conversation, search, or analysis, Dassai loads the **original data snapshot** from when that item was first run. You see the same facts, the same calculations, and the same sources that existed at the time — the content is not silently refreshed with today's data.
+
+This behavior is intentional. It lets you reconstruct your original reasoning faithfully: if you were looking at a company's Q3 earnings when you formed a view, reopening that conversation shows you the Q3 earnings data, not whatever has been announced since. The snapshot timestamp is displayed prominently so you always know the data vintage you are working with.
+
+<Tip>
+  Use History to trace why you made a research decision by reviewing the evidence available at that time. Comparing a reopened snapshot to a fresh rerun is one of the most effective ways to understand how your investment situation has changed.
+</Tip>
+
+## Rerunning with Current Data
+
+When you want to apply the same research question, screen, or analysis to today's market data, click **Rerun** on any history item.
+
+A rerun:
+
+1. Takes the same question text, compiled filter criteria, or analysis parameters from the original item
+2. Executes a fresh query against current market data
+3. Creates a **new version** of the result, linked to the original record so you can compare them side by side
+4. Leaves the original snapshot untouched and fully accessible
+
+The new version appears at the top of the conversation or search, clearly labeled with the rerun timestamp and the data cutoff. The original version remains in the version history below it. You can toggle between versions to see what has changed.
+
+<Note>
+  Rerunning a conversation starts a new run from the first question in the thread, using the same entity context. If a security has been delisted, renamed, or merged since the original run, the rerun will flag the resolution difference before proceeding.
+</Note>
+
+## Managing History
+
+Keep your History surface organized so your most important research remains easy to find.
+
+**Renaming items** — click the item title to rename it. Use names that reflect the research question rather than the default timestamp, for example "茅台毛利率分析 - 2024Q3" instead of "Conversation Aug 14".
+
+**Pinning important items** — pin any conversation, search, or analysis to keep it at the top of the History list regardless of when it was last opened. Pinned items are also surfaced in the sidebar for quick access.
+
+**Archiving items** — archive history items you no longer need for active research. Archived items are moved out of the main list but are not deleted; you can restore them from the archive filter at any time.
+
+**Filtering and sorting** — use the filter controls at the top of the History surface to narrow by type (conversations, searches, analyses), date range, or associated security. Sort by last opened, date created, or item name.

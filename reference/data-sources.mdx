@@ -1,0 +1,96 @@
+---
+title: "Data Sources and Coverage in Dassai"
+sidebarTitle: "Data Sources"
+description: "Learn which market data, financial reports, and announcement sources Dassai uses, how data is timestamped, and what coverage limitations exist."
+---
+
+Dassai aggregates multiple official and licensed data sources to build a coherent, traceable research environment for A-share investors. Every market value, financial figure, and document reference in Dassai carries provider metadata and a capture timestamp — so you always know not just what the data says, but where it came from and when it was recorded. No data point is silently inferred; where coverage is incomplete or access is restricted, Dassai tells you explicitly.
+
+## A-Share Market Coverage
+
+The following securities and indices are supported in the current version:
+
+| Asset Class | Exchange / Description |
+|---|---|
+| Active Shanghai A-shares | 上海证券交易所 (SSE) — main board and STAR Market (科创板) |
+| Active Shenzhen A-shares | 深圳证券交易所 (SZSE) — main board, SME board, and ChiNext (创业板) |
+| Beijing Stock Exchange securities | 北京证券交易所 (BSE) — fixture coverage only in the current version |
+| ETFs | Selected exchange-traded funds included in Dassai's research journeys |
+| Major A-share indices | 上证指数、深证成指、创业板指、沪深300 |
+
+## Security Identity
+
+Every security in Dassai is anchored to a canonical identity that goes beyond a ticker symbol. The full identity record for any A-share security includes:
+
+- **Exchange-qualified code** — in the format `600519.SH` or `000858.SZ`, this is the primary non-ambiguous identifier used throughout Dassai
+- **6-digit symbol** — the bare symbol used in common Chinese market convention (e.g., `600519`)
+- **Chinese name** — the official listed name; historical names and common abbreviations are tracked as aliases and resolve to the same canonical identity
+- **Exchange** and **market board** — SSE main board, SZSE ChiNext, STAR Market, BSE, etc.
+- **Listing status** — active, suspended, delisted, or newly listed; each state is represented explicitly in Dassai's data model
+- **Industry classification** — used for sector screening and peer comparison
+
+Delisted, suspended, and newly listed securities are not treated as missing data — they appear with an explicit status flag. Dassai uses the trading calendar and corporate action records to distinguish a price gap caused by a suspension from one caused by a data gap.
+
+## Financial Data
+
+Financial data in Dassai distinguishes three separate dates that are often conflated in other tools:
+
+| Date Type | Definition |
+|---|---|
+| **Reporting period** | The fiscal period the financial data covers (e.g., FY2023, Q3 2024) |
+| **Announcement date** | The date the company filed or disclosed the report |
+| **Data capture date** | The date Dassai's data pipeline recorded this value from its source |
+
+These three dates are shown independently wherever financial data appears. A Q3 earnings figure that was filed in October and captured by Dassai in November will show all three timestamps, so you understand exactly what version of reality that number represents.
+
+Missing, not-applicable, and permission-denied are three separate data states in Dassai. None of these is coerced to zero or left blank without explanation. When a field shows "N/A", Dassai distinguishes whether the metric genuinely does not apply to this security (e.g., a bank with no inventory), whether the data was not available from the source, or whether your access level does not include that field.
+
+## Adjusted Prices
+
+All return calculations and portfolio performance figures in Dassai use **forward-adjusted prices (前复权)**. This convention normalizes the historical price series to account for cash dividends, stock splits, rights issues, and other corporate actions — so that a price chart reflects economically meaningful returns rather than mechanical price discontinuities.
+
+Dassai makes this convention explicit in every context where it matters:
+
+- Return charts state the adjustment convention in the chart header or legend
+- The raw close price and the adjustment factor are both stored and accessible; you can inspect the unadjusted series if you need it
+- Corporate actions that affect the adjustment factor are reflected as market facts in the security record, not inferred from price jumps
+
+## Official Announcements
+
+Dassai sources official company announcements from exchange disclosure systems. The following document types are covered:
+
+| Document Type | Chinese Term |
+|---|---|
+| General announcements | 公告 |
+| Periodic reports (annual, semi-annual, quarterly) | 定期报告 |
+| Performance forecasts and earnings pre-announcements | 业绩预告 |
+| Exchange inquiry replies | 问询函回复 |
+
+Every document reference includes its source type, issuer, publication date, and a locator pointing back to the original disclosure. Model-generated summaries of announcements are labeled as generated content and remain linked to the underlying source snapshot — the summary is never a substitute for the original document.
+
+## Data Freshness
+
+Dassai does not use a single global "data as of" timestamp. Instead, every data block carries its own freshness indicator at the field level. For any market or financial value you see in Dassai, the following metadata is available:
+
+- **Unit** — shares, CNY, %, basis points, etc.
+- **Currency** — CNY unless otherwise stated
+- **Reporting period** — the period the value covers
+- **Freshness indicator** — when the value was last updated in Dassai's data pipeline
+
+When data is stale beyond a defined threshold, Dassai produces an explicit warning rather than displaying the value without comment. The AI does not fill data gaps with plausible text — if a value is missing, the gap is labeled as a gap.
+
+<Info>
+  Dassai uses **Tushare Pro** as its primary market data provider for live data. All data access follows Tushare's licensing terms. For development, testing, and external demonstrations, Dassai operates in fixture mode using versioned, pre-recorded datasets that do not require a live Tushare connection.
+</Info>
+
+## Coverage Limitations
+
+<Note>
+  Be aware of the following coverage constraints in the current version of Dassai:
+
+  - **No real-time data** — Dassai does not provide real-time Level-1 or Level-2 tick data, intraday quotes, or order-book depth. All market data reflects the most recently captured snapshot from Dassai's data pipeline.
+  - **BSE fixture coverage only** — Beijing Stock Exchange (北京证券交易所) securities have limited coverage in the current version, backed by fixture data rather than live data feeds.
+  - **Access-restricted research content** — Some research documents and licensed reports may be unavailable depending on your entitlement level. Locked content is labeled with the reason for unavailability; decorative paywalls are not used.
+  - **Corporate action processing delay** — Mergers, splits, rights issues, and other corporate actions are reflected in adjusted prices and the security record, but may carry a processing delay before they appear in Dassai.
+  - **Data redistribution restrictions** — All market data is provided under licensed terms. Redistribution, bulk export, or use of raw data outside Dassai's research interface may be restricted under the applicable data licensing agreements.
+</Note>

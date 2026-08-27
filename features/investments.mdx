@@ -1,0 +1,150 @@
+---
+title: "Investments: Manage Your Research Portfolios and Watchlists"
+sidebarTitle: "Investments"
+description: "Track your research portfolios and watchlists in Dassai — manual, simulated positions for analysis purposes, not real brokerage accounts."
+---
+
+The Investments surface is your personal research object layer — not a brokerage account. Everything here is a **manually entered, simulated research position** that you control entirely. No broker is connected, no real money moves, and nothing on this page represents an actual account balance. Think of it as a structured notebook for the securities and baskets you want to study: it gives Dassai's analysis engine an explicit, verifiable basis to work from, and it gives you a stable context to attach to any question you ask in the Ask bar.
+
+## Two main views
+
+Investments organizes your research objects into two distinct views. They serve different purposes and are kept separate so that tracking interest never implies ownership.
+
+<CardGroup cols={2}>
+  <Card title="Research Portfolios" icon="briefcase">
+    Named collections of A-share securities with assigned research weights. Use portfolios when you want to study a basket — historical replay, benchmark comparison, contribution breakdown, risk metrics — and you need an explicit, percentage-based allocation to anchor the calculations.
+  </Card>
+  <Card title="Watchlists" icon="eye">
+    Securities you follow without committing to a weight or allocation. A watchlist is the right place for stocks you are monitoring but have not yet decided to include in a research basket. Watchlist items flow directly into the Ask bar as selectable context.
+  </Card>
+</CardGroup>
+
+## Creating a research portfolio
+
+<Steps>
+  <Step title="Open Investments and click New Portfolio">
+    From the left sidebar, navigate to **Investments**. On the Research Portfolios tab, click the **New Portfolio** button in the upper right.
+  </Step>
+  <Step title="Name your portfolio">
+    Enter a descriptive name — for example, "消费白马核心篓" or "科创板高成长组合". The name is private and only visible to you. Click **Continue**.
+  </Step>
+  <Step title="Add A-share securities">
+    Search by Chinese company name, 6-digit code (e.g., `600519`), or exchange-qualified code (e.g., `600519.SH`). Select each security from the disambiguation list that appears. See [Adding securities](#adding-securities) below for details on name resolution.
+  </Step>
+  <Step title="Set research weights">
+    Assign a percentage weight to each security. Weights represent your intended research allocation — the proportions Dassai uses as the calculation basis. They do not need to match any real position you hold.
+  </Step>
+  <Step title="Save the portfolio">
+    Click **Save Portfolio**. Dassai validates the weights before saving. Once saved, the portfolio is immediately available as context in the Ask bar and as an analysis target on this page.
+  </Step>
+</Steps>
+
+<Warning>
+  Research weights must be non-negative and must sum to exactly 100%. If any weight is negative or the total does not equal 100%, the affected rows are highlighted in red and saving is blocked until you correct the values. Analysis never runs on an invalid weight set — partial or unnormalized weights would silently distort every calculation that depends on them.
+</Warning>
+
+## Adding securities
+
+You can identify an A-share security in any of three formats the system recognizes:
+
+- **Chinese company name** — e.g., `贵州茅台` or its common abbreviation `茅台`
+- **6-digit symbol** — e.g., `600519`
+- **Exchange-qualified code** — e.g., `600519.SH` (Shanghai) or `000858.SZ` (Shenzhen)
+
+When you type a name or bare code, Dassai resolves it against the canonical A-share security registry. If more than one active security matches — for example, when a common abbreviation applies to multiple companies on different boards — a disambiguation panel appears listing each candidate with its full name, exchange, board, and industry. Select the correct security before proceeding. The system never silently picks one for you.
+
+<Note>
+  Historical names and common short-form abbreviations are recognized. If a company was previously listed under a different name, entering the old name still resolves to the current canonical identity.
+</Note>
+
+## Holdings table
+
+Once a portfolio has securities, the holdings table is the primary way to inspect its composition. The table is deterministic — every sort, filter, and search is applied directly to the data, not through an AI interpretation.
+
+Available columns include:
+
+| Column | Description |
+|---|---|
+| Code | Exchange-qualified code (e.g., `600519.SH`) |
+| Name | Current official company name |
+| Exchange | 上交所 / 深交所 / 北交所 |
+| Industry | SW industry classification |
+| Research weight | Your assigned percentage for this portfolio |
+| Price change | Latest available daily change with data freshness indicator |
+
+**Sorting** — click any column header to sort ascending or descending. The active sort rule is always labeled so that position in the table is never mistaken for a ranking or recommendation.
+
+**Filtering** — use the search field above the table to filter by name, code, or industry. Filters apply instantly without reloading.
+
+**Row actions** — click any row to open that security's object research context, where you can explore financials, announcements, and ask questions scoped to that company.
+
+## Portfolio historical replay
+
+The historical replay feature lets you study how your current research basket would have performed over a period you choose, using the weights you have set today and the adjusted closing prices for each security in that period.
+
+**What the replay does:**
+
+- Applies your current research weights as if they were held constant throughout the selected period
+- Uses forward-adjusted closing prices that account for splits and rights issues per the disclosed adjustment convention
+- Calculates daily portfolio value, cumulative return, and benchmark-relative performance over the selected date range
+- Shows the adjustment convention and data cutoff explicitly for every calculation
+
+**What the replay does not do:**
+
+- It does not reconstruct any real trades you made or any actual account history
+- It does not deduct transaction costs, stamp duty, brokerage commissions, or taxes
+- It does not account for dividends that are not already embedded in the adjusted-price convention
+- It does not model cash flows, rebalancing events, or any change in weights over time
+
+<Warning>
+  **Replay results are not actual account performance.** The historical replay is a research tool that applies a fixed, static weight set to historical prices. It cannot account for the cash flows, costs, taxes, and timing decisions that characterize a real investment account. Do not use replay results to describe past performance to others or to draw conclusions about future returns.
+</Warning>
+
+## Contribution and risk metrics
+
+After running a historical replay, Dassai calculates a set of portfolio-level and security-level metrics. Every metric exposes its formula, input parameters, and calculation window so you can verify and reproduce the result independently.
+
+**Benchmark selection** — before viewing metrics, select an A-share benchmark index. Available benchmarks include:
+
+- 沪深300 (CSI 300)
+- 上证指数 (SSE Composite)
+- 深证成指 (SZSE Component)
+- 创业板指 (ChiNext)
+
+The selected benchmark and its period are always displayed alongside the metric values.
+
+**Available metrics:**
+
+<Accordion title="Contribution breakdown">
+  Each security's contribution to the portfolio's total return over the selected period, calculated as its weight multiplied by its individual return. Contributions sum to the total portfolio return. The formula, weight used, and individual security return are all shown.
+</Accordion>
+
+<Accordion title="Volatility">
+  Annualized standard deviation of daily returns over the selected window. The calculation shows the number of trading days used, the annualization factor, and the data cutoff date.
+</Accordion>
+
+<Accordion title="Maximum drawdown">
+  The largest peak-to-trough decline in the portfolio's cumulative return series during the selected period. The start date, trough date, and recovery date (if reached) are shown.
+</Accordion>
+
+<Accordion title="Beta">
+  The portfolio's sensitivity to the selected benchmark, calculated over the selected window using daily returns. The regression period and the benchmark used are labeled on the result.
+</Accordion>
+
+<Accordion title="Sharpe ratio">
+  Annualized excess return over the risk-free rate divided by annualized volatility. The risk-free rate assumption, the source of that rate, and the calculation period are disclosed with every Sharpe figure.
+</Accordion>
+
+## Watchlist management
+
+Your watchlist holds individual securities you are tracking without a portfolio context. Items can be added at any time from search results, security detail pages, or directly from the Watchlist tab.
+
+**Adding items** — search by name, 6-digit code, or exchange-qualified code. Select from the disambiguation list when multiple matches appear.
+
+**Removing items** — hover any row and click the remove icon, or select multiple rows and use the bulk remove action.
+
+**Watchlist and the Ask bar** — watchlist items appear in the Investments picker beside the Ask bar. Select one or more items before submitting a question to scope the answer explicitly to those securities. Selected items appear as removable chips in the input so you always know what the answer is about.
+
+<Tip>
+  Link your portfolio or watchlist as context in the Ask bar to get research targeted to your specific holdings. Instead of typing "分析贵州茅台", select 600519.SH from your watchlist picker first — this makes the entity explicit, prevents ambiguity, and lets you chain follow-up questions without re-specifying the security each time.
+</Tip>

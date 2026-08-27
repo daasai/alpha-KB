@@ -1,0 +1,135 @@
+---
+title: "Notifications: Stay Informed on What Matters to Your Research"
+sidebarTitle: "Notifications"
+description: "Dassai Notifications surface fact changes and judgment review items tied to your confirmed premises — not a news feed, but targeted research alerts."
+---
+
+Dassai's notifications are not a news feed. Every alert that reaches you must explain which holding or judgment premise it relates to — if Dassai cannot draw that connection, the fact doesn't surface as a notification at all. The result is a tightly scoped signal layer: instead of scrolling through market commentary, you see only the developments that directly bear on convictions you have already articulated and confirmed.
+
+## Notification Tabs
+
+Open the Notifications surface from the left sidebar. Four tabs organize your alerts by state so you can triage at a glance.
+
+<Tabs>
+  <Tab title="Unread">
+    All new notifications you haven't opened yet — both fact changes and pending judgment reviews appear here. Badges on the sidebar icon reflect this count. Opening a notification marks it as read but does **not** automatically close a review workflow; those two states are tracked independently.
+  </Tab>
+  <Tab title="Pending Review">
+    Items where Dassai has matched new evidence to one of your confirmed judgment premises and is waiting for your explicit decision. Each item shows the premise that was triggered, the matched evidence fact, and the source. You must complete a Research Disposition before the item moves out of this tab.
+  </Tab>
+  <Tab title="Waiting for Data">
+    Watch conditions that are active but whose expected data has not yet arrived. For example, a condition monitoring quarterly earnings may stay here between reporting windows. These are not errors — they signal that monitoring is live but the evaluation period hasn't completed.
+  </Tab>
+  <Tab title="Handled">
+    Completed reviews with their recorded Research Dispositions. Use this tab to audit past decisions and trace the evidence that informed them. Records here are immutable; a submitted disposition cannot be overwritten.
+  </Tab>
+</Tabs>
+
+## Fact Changes vs. Judgment Reviews
+
+These two notification types look similar but serve different purposes in your research workflow. Understanding the distinction helps you prioritize which alerts to act on first.
+
+<CardGroup cols={2}>
+  <Card title="Fact Change" icon="circle-info">
+    A new fact related to one of your holdings or watchlist items has met Dassai's importance threshold. The fact has a traceable source and timestamp, but it hasn't been connected to any of your confirmed judgment premises yet. A fact change invites you to consider whether it's relevant to your thesis — it doesn't require a formal review decision.
+  </Card>
+  <Card title="Judgment Review" icon="magnifying-glass">
+    New evidence has been matched to a premise you previously confirmed. This match creates a Review Trigger, which aggregates into a user-facing Pending Review item. A judgment review requires an explicit Research Disposition from you before it is considered handled.
+  </Card>
+</CardGroup>
+
+<Info>
+  A single market event can produce both a fact change and a judgment review simultaneously — for example, if a company's gross margin decline is both a new fact in your holdings feed and a direct hit on a premise you set up to monitor margin trends.
+</Info>
+
+## Watch Conditions
+
+Watch conditions are the mechanism that connects your confirmed judgment premises to ongoing monitoring. You create them explicitly; Dassai never activates monitoring silently from an AI draft.
+
+<Steps>
+  <Step title="Open a confirmed judgment premise">
+    Navigate to the Research Workbench that holds the premise, or find it from the Pending Review tab of a related notification. Only confirmed premises — not AI-drafted proposals — can have watch conditions attached.
+  </Step>
+  <Step title="Click 'Add Watch Condition'">
+    Describe the condition you want to monitor in plain language, for example: "毛利率连续两季度下降超过3个百分点". Dassai translates your description into a structured condition showing the data source it will monitor, the operator and threshold, and the evaluation frequency.
+  </Step>
+  <Step title="Preview the condition">
+    Review exactly what Dassai will watch: which metric or data source, which object it applies to, the specific threshold, and how often it will be evaluated. The preview also states any known limitations — for example, if the relevant data is only refreshed quarterly.
+  </Step>
+  <Step title="Confirm to activate">
+    Click Confirm. The condition moves from draft to active status and is now bound to this specific version of your premise. If you update the premise text later, you must re-confirm the condition for it to remain active against the new version.
+  </Step>
+</Steps>
+
+<Warning>
+  Watch conditions only activate after you explicitly confirm them — they are never silently activated from an AI draft. Dassai checks active conditions on manual refresh or app startup; it does not promise continuous real-time background monitoring.
+</Warning>
+
+## Reviewing an Alert
+
+When a pending review item appears in your Notifications, click it to open the review panel. The panel is structured to give you exactly the information you need to make a Research Disposition — nothing more.
+
+Inside the review panel you will see:
+
+- **Triggering condition** — the watch condition or fact-change rule that fired
+- **Affected object** — the security or theme the evidence relates to
+- **Detected fact** — the specific, citable fact that matched the condition, with its data timestamp
+- **Source snapshot** — the provider, document title, publication time, and capture time so you can verify the evidence independently
+
+Read the impact assessment Dassai provides — it maps the detected fact to your premise and classifies the relationship as supporting, weakening, or conflicting. This is Dassai's evidence evaluation, not a recommendation. The decision is yours.
+
+## Research Disposition Options
+
+After reviewing the evidence, select one of five Research Dispositions. Your choice is saved permanently and cannot be overwritten by a subsequent AI analysis.
+
+<Accordion title="Maintain (保持)">
+  The evidence has been reviewed and your premise still holds. No change is needed to the premise text or version. A "Maintain" decision does not create a new judgment version — the existing premise remains current. Use this when the evidence is not material enough to require updating your thesis.
+</Accordion>
+
+<Accordion title="Adjust (调整)">
+  The new evidence is significant enough that your premise needs updating. Selecting "Adjust" opens an editing flow where you can revise the premise text. When you confirm the revised premise, a new judgment version is created and the old version is preserved in the version history for audit.
+</Accordion>
+
+<Accordion title="Continue Research (继续研究)">
+  The evidence raises a question, but you need more information before making a definitive call. Selecting this disposition records that you've acknowledged the evidence and flags that further research is in progress. The item moves to Handled, but you can create a follow-up research conversation directly from the review panel.
+</Accordion>
+
+<Accordion title="Wait (等待)">
+  You've acknowledged the evidence but are intentionally deferring the decision — for example, because a confirming data point is expected next quarter. The review is marked as handled with a "Wait" disposition. You can add a note explaining what you are waiting for and when you expect to revisit.
+</Accordion>
+
+<Accordion title="Close (关闭)">
+  The premise is no longer relevant to your current investment view — for example, you've exited the position or the thesis has fundamentally changed. Selecting "Close" deactivates all watch conditions bound to this premise version and marks the review as handled. Closed premises remain in version history and are not deleted.
+</Accordion>
+
+## Notification Settings
+
+Control how and when Dassai delivers alerts to keep your attention focused.
+
+<ParamField path="alert_frequency" type="select" default="on_refresh">
+  **Alert frequency** — choose when Dassai evaluates and surfaces new notifications:
+  - `on_refresh` — checks conditions each time you manually refresh or open the app
+  - `daily_digest` — batches alerts and surfaces them once per day when you open the app
+  - `off` — disables automatic surfacing; you can still check Notifications manually
+</ParamField>
+
+<ParamField path="categories" type="multiselect">
+  **Alert categories** — toggle which types of notifications you want to receive:
+  - Fact changes for portfolio holdings
+  - Fact changes for watchlist items
+  - Pending judgment reviews
+  - Waiting-for-data condition updates
+</ParamField>
+
+## Read vs. Review Status
+
+These are two independent tracking dimensions — it is important not to conflate them.
+
+| Action | Effect on Read | Effect on Review |
+|---|---|---|
+| Open a notification | Marked as read | No change |
+| Mark all as read | All marked read | No change |
+| Submit a Research Disposition | No change | Moves to Handled |
+| Archive a handled item | No change | Remains Handled |
+
+Marking a notification as read does not close the review workflow. A notification can be read but still sit in Pending Review until you submit a disposition. This design ensures that reading an alert during a quick check doesn't accidentally clear a pending research obligation.

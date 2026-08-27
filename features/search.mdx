@@ -1,0 +1,178 @@
+---
+title: "Search and Discovery: Screen A-Share Securities with Natural Language"
+sidebarTitle: "Search"
+description: "Use plain Chinese to screen A-share stocks and ETFs by business characteristics, financials, or market conditions — no query syntax required."
+---
+
+The Search surface lets you describe the kind of company or fund you are looking for in plain Chinese and turn that description into a set of verifiable, structured criteria — then apply those criteria against the full A-share universe. You do not need to know field names, filter operators, or threshold syntax. Type what you are looking for the way you would explain it to a colleague: "连续三年 ROE 超过 15% 的消费品公司" or "低估值、高分红的银行股". Dassai compiles your description into a visible, editable filter model that you can inspect, adjust, and save before treating the results as a research input.
+
+## Search surfaces
+
+The Search page opens with three scope tabs. Each tab focuses the screening universe so that results are relevant to the object type you care about.
+
+<Tabs>
+  <Tab title="For You">
+    A personalized starting point that surfaces screening ideas, trending research themes, and suggested discovery questions based on the securities in your portfolios and watchlists. If you have not yet added any securities to Investments, this tab shows popular A-share screening starting points instead. The "For You" suggestions are research prompts — they are not recommendations to buy or avoid any security.
+  </Tab>
+  <Tab title="A股">
+    Screens against all active Shanghai, Shenzhen, and Beijing Exchange A-share stocks in the covered universe. This is the primary tab for company discovery and fundamental screening. Results are companies, not trading signals.
+  </Tab>
+  <Tab title="ETFs">
+    Screens against exchange-traded funds listed on A-share exchanges. Use this tab when you want to study index-tracking products, sector ETFs, or thematic funds rather than individual stocks.
+  </Tab>
+</Tabs>
+
+## Natural language screening
+
+Type a description of the companies you want to find in the search field. You can be as specific or as broad as you like — Dassai will compile whatever you enter into structured criteria and show you exactly what it interpreted before displaying results.
+
+**Example queries:**
+
+```text
+高毛利、低负债的消费龙头
+```
+
+```text
+近三年营收复合增长超过 20% 的科创板公司
+```
+
+```text
+市盈率处于历史低位且最近有业绩预告的银行股
+```
+
+After you submit a query, Dassai does two things simultaneously: it begins executing the compiled filters against the data, and it renders the **compiled filter panel** so you can see what criteria it actually applied. You do not need to wait for results to inspect or edit the criteria.
+
+The compiled filter panel is fully editable. You can tighten a threshold, remove a criterion you did not intend, or add a criterion you forgot — all without retyping the whole query. Every manual edit reruns the screen and updates the result count in real time.
+
+<Tip>
+  Use natural language first to get close, then refine the compiled filters manually for precision screening. Natural language is fast for exploration; manual filter editing is precise for research. The two modes work together — you do not have to choose one or the other.
+</Tip>
+
+## Understanding compiled filters
+
+Each phrase in your natural-language query is compiled into one or more structured criteria. Dassai shows you the outcome for every criterion in three categories:
+
+<CardGroup cols={3}>
+  <Card title="Included" icon="circle-check">
+    The criterion resolved successfully, matched the coverage available, and is being applied to filter results. The specific field, operator, and threshold are shown.
+  </Card>
+  <Card title="Excluded" icon="circle-minus">
+    The criterion resolved but no securities in the current universe pass it — or the criterion was intentionally exclusionary (e.g., "非金融行业"). The reason is shown.
+  </Card>
+  <Card title="Unknown" icon="circle-question">
+    The criterion could not be resolved against available data — for example, a metric is not covered, the data window is insufficient, or the phrasing was too ambiguous to map to a specific field. **Unknown criteria never pass silently.** The system tells you exactly what it could not resolve, and those criteria are not applied.
+  </Card>
+</CardGroup>
+
+<Warning>
+  If a criterion lands in the **Unknown** category, it is not applied to the results — the screen runs without it. This means results could be broader than you intended. Always review the Unknown column before treating results as a filtered set. If an important criterion is unknown, refine it manually using the compiled filter panel.
+</Warning>
+
+## Supported filter dimensions
+
+The following dimensions are available for structured screening. Coverage varies by security and by data window; the compiled filter panel shows a coverage indicator next to each active criterion.
+
+<Accordion title="Exchange and market board">
+  Filter by listing exchange or board:
+  - **Exchange**: 上交所 (SSE), 深交所 (SZSE), 北交所 (BSE)
+  - **Board**: 主板, 创业板, 科创板
+</Accordion>
+
+<Accordion title="Industry classification">
+  Filter by SW (申万) industry classification at the first, second, or third level. You can include or exclude specific industries. Natural-language industry references such as "消费品" or "半导体" are mapped to the relevant SW codes.
+</Accordion>
+
+<Accordion title="Market capitalization">
+  Filter by total or free-float market cap. Thresholds are expressed in absolute RMB values (e.g., ≥ 100亿) or as relative size bands (大盘股, 中盘股, 小盘股).
+</Accordion>
+
+<Accordion title="Valuation">
+  - **P/E ratio (市盈率 PE)**: absolute threshold or percentile rank within industry
+  - **P/B ratio (市净率 PB)**: absolute threshold or percentile rank within industry
+  - Both TTM and LFY conventions are supported; the convention used is labeled on every result
+</Accordion>
+
+<Accordion title="Profitability">
+  - **ROE**: return on equity, annual or trailing twelve months
+  - **Gross margin (毛利率)**: revenue minus COGS as a percentage of revenue
+  - **Net margin (净利率)**: net profit as a percentage of revenue
+</Accordion>
+
+<Accordion title="Growth">
+  - **Revenue growth (营收增长)**: year-over-year or compound annual growth rate over 3 or 5 years
+  - **Earnings growth (净利润增长)**: year-over-year or CAGR
+  - Growth rates use the financial reporting period; the period is labeled on each result
+</Accordion>
+
+<Accordion title="Leverage">
+  - **Debt-to-equity ratio (资产负债率)**: total liabilities divided by total equity
+  - **Interest coverage ratio (利息保障倍数)**: EBIT divided by interest expense
+</Accordion>
+
+<Accordion title="Price performance">
+  - 1-month, 3-month, and 12-month total return using adjusted prices
+  - The adjusted-price convention is disclosed on every price-performance criterion
+</Accordion>
+
+<Accordion title="Liquidity">
+  - **Average daily trading volume (日均成交量)**: 20-day or 60-day average
+  - Useful for filtering out securities that are too illiquid for meaningful research
+</Accordion>
+
+<Accordion title="Disclosure events">
+  - **Recent announcements**: securities with exchange filings in the last N days
+  - **Earnings reports**: securities that have published a periodic report in a specified window
+  - **Performance forecasts**: securities that have issued a 业绩预告 in a specified period
+</Accordion>
+
+## Result table
+
+The result table lists every security that passes all active compiled criteria. The table is deterministic — it applies the filter model exactly as specified and returns matching securities with no AI reranking or undisclosed boosting.
+
+Default columns in the result table:
+
+| Column | Description |
+|---|---|
+| Code | Exchange-qualified code |
+| Name | Current official company name |
+| Exchange / Board | 上交所/深交所/北交所 and 主板/创业板/科创板 |
+| Industry | SW first-level industry |
+| Key metrics | The metrics most relevant to your active criteria, shown as values with units and period labels |
+| Data date | The as-of date for the metric values shown — not a global "latest" label |
+| Source | The data provider and coverage confirmation |
+
+**Sorting** — click any column header to sort. The active sort rule is labeled; position in the table never implies a ranking or a recommendation.
+
+**Pagination** — large result sets are paginated. The total result count is shown above the table so you can judge whether your criteria are too broad or too narrow before scrolling through results.
+
+**Column customization** — use the column selector to show or hide columns. You can add any supported metric as a column, including metrics not part of your active filter criteria.
+
+**Row actions** — click any row to open that security's research context. You can also select rows using the checkbox column for side-by-side comparison.
+
+## Security comparison
+
+Select two or more securities in the result table using the row checkboxes, then click **Compare** to open a side-by-side comparison panel. The panel shows the key metric values for each selected security in aligned columns so you can examine differences directly.
+
+<Note>
+  Comparisons show data side by side — they do not rank securities, assign scores, or recommend one over another. Row order in the comparison panel follows the same sort rule as the result table and is labeled accordingly. No visual treatment (color, badge, highlight) implies that any security is preferred.
+</Note>
+
+The comparison panel supports all the same column dimensions as the result table. You can add or remove metrics from the comparison view without returning to the main results.
+
+## Saving searches
+
+After running a screen, click **Save Search** to persist the search as a reusable research asset. Dassai saves:
+
+- Your original natural-language utterance
+- The full compiled filter model (all criteria, thresholds, and conventions)
+- The active scope tab (A股 or ETFs)
+- The active sort rule and visible columns
+- The result snapshot timestamp and data provider mode
+
+**Rerunning a saved search** — open any saved search from the Saved Searches tab. By default, Dassai opens the original result snapshot so you can see what the screen returned when you first ran it. To refresh with current data, click **Rerun with Current Data**. The rerun result is shown alongside a **Changes since last run** summary that highlights:
+
+- Securities that newly enter the screen (newly pass all criteria)
+- Securities that dropped out of the screen (no longer pass one or more criteria)
+- Criterion values that changed materially for securities that remain in the result set
+
+This change summary makes saved searches a lightweight monitoring tool — you can periodically rerun a screen to track how the universe that matches your criteria evolves over time.

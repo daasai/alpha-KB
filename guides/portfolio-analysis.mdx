@@ -1,0 +1,129 @@
+---
+title: "Analyze Your A-Share Portfolio with Dassai"
+sidebarTitle: "Portfolio Analysis"
+description: "Set up a research portfolio in Dassai and run historical replay, return attribution, and risk analysis — with all calculations transparently explained."
+---
+
+Portfolio analysis in Dassai lets you study how a basket of A-share securities would have behaved over a historical period, with full transparency into every calculation. You can compare a research portfolio against a benchmark, decompose which holdings drove performance, and inspect risk metrics — all backed by deterministic calculations with visible formulas and traceable source data.
+
+What Dassai's portfolio analysis **can** do: run historical replay using forward-adjusted closing prices, compute benchmark-relative performance, attribute contribution by security, and calculate standard risk metrics with auditable formulas.
+
+What it **cannot** do: represent actual brokerage account performance, account for your real transaction history, or simulate the impact of taxes, trading costs, dividends outside the adjusted-price convention, or cash flows between your positions.
+
+<Warning>
+  Portfolio analysis uses simulated research positions and historical replay. This is **not** actual account performance and does not account for transaction costs, taxes, rebalancing, or real cash flows. Results are for research reference only and are not investment advice.
+</Warning>
+
+<Steps>
+  <Step title="Create a research portfolio">
+    Navigate to **Investments** in the left sidebar and click **New Research Portfolio**. Enter a descriptive name — for example, "消费核心持仓组合" or "科技成长研究篮子".
+
+    For each security you want to include:
+    1. Search by company name, 6-digit code, or exchange-qualified code
+    2. Enter a research weight (the percentage of the portfolio this position represents)
+    3. Optionally add a reference cost and an effective date for your own records
+
+    <Note>
+      Research portfolios represent your simulated research positions, not actual brokerage holdings. They are labeled accordingly throughout Dassai to prevent confusion with real account balances.
+    </Note>
+  </Step>
+
+  <Step title="Validate weights">
+    Before running an analysis, Dassai checks that all weights are valid. The validation rules are:
+
+    - Every weight must be a positive number greater than zero
+    - All weights must sum to exactly 100%
+    - No individual security may have a weight of zero (remove it from the portfolio instead)
+
+    Invalid weights are highlighted in red with an explanation. Dassai will not run a portfolio analysis until all weights pass validation — this prevents silently misleading results caused by unnormalized inputs.
+
+    Click **Normalize Weights** to have Dassai proportionally scale your current inputs to sum to 100%, or adjust the values manually.
+  </Step>
+
+  <Step title="Select a benchmark">
+    Choose a benchmark index to compare your portfolio against. Dassai supports the major A-share benchmarks:
+
+    | Benchmark | Code | Coverage |
+    |---|---|---|
+    | 沪深300 | CSI 300 | Top 300 stocks by market cap, Shanghai + Shenzhen |
+    | 上证指数 | SSE Composite | All Shanghai A and B shares |
+    | 深证成指 | SZSE Component | Top 500 Shenzhen stocks by size and liquidity |
+    | 创业板指 | ChiNext Index | Top 100 ChiNext stocks |
+
+    Choose the benchmark that best matches the market segment of your portfolio. A portfolio of large-cap SOEs should be compared against 沪深300; a portfolio of ChiNext growth stocks is more meaningfully benchmarked against 创业板指.
+  </Step>
+
+  <Step title="Set the analysis period">
+    Set the start and end dates for the historical replay. Dassai validates that both dates fall on A-share trading days — if you choose a weekend, market holiday, or a day during a trading suspension, it will adjust to the nearest valid trading day and confirm the adjustment with you before proceeding.
+
+    Keep in mind that the analysis uses current research weights throughout the entire historical period. It does not reconstruct actual trades or rebalancing events. For a portfolio held for many years, the current weights may not reflect what you actually held at the start of the period — this is a key reason why results are labeled as simulated.
+  </Step>
+
+  <Step title="Run historical replay">
+    Click **Run Analysis**. Dassai executes the replay using:
+
+    - **Forward-adjusted closing prices** for all securities, incorporating the effects of dividends, rights issues, and splits into the price series
+    - **Current research weights** held constant throughout the analysis period
+    - **Benchmark total return** for the selected index over the same period
+
+    Execution stages are displayed in real time. The analysis runs deterministically — the same inputs always produce the same outputs.
+  </Step>
+
+  <Step title="Read the results">
+    The completed analysis is organized into sections. Work through each section to build a complete picture of historical performance.
+
+    **Portfolio return vs. benchmark return** — the top-line comparison. Cumulative return and annualized return for the portfolio and the benchmark over the analysis period, with excess return (alpha) calculated as the difference. The benchmark name and period are stated explicitly.
+
+    **Contribution breakdown** — which securities drove portfolio performance. Each holding's contribution is shown as a percentage-point impact on total portfolio return, decomposed into:
+    - Weight effect (how much of the portfolio it represented)
+    - Return effect (how the security itself performed)
+    - Interaction effect
+
+    Use this section to understand concentration risk and to identify which positions were the primary drivers of historical outcomes.
+
+    **Risk metrics** — calculated over the analysis period with the formula, parameters, sample window, and data cutoff visible for each:
+
+    | Metric | Definition shown |
+    |---|---|
+    | Volatility | Annualized standard deviation of daily returns |
+    | Maximum drawdown | Largest peak-to-trough decline over the period |
+    | Annualized Sharpe ratio | Excess return per unit of volatility (risk-free rate stated) |
+    | Beta | Sensitivity of portfolio returns to benchmark returns |
+
+    **Rolling performance charts** — 12-month rolling return and rolling Sharpe, plotted over the full analysis period. These charts show how performance characteristics evolved over time, not just the single-period summary statistics.
+  </Step>
+
+  <Step title="Inspect calculation details">
+    Every metric in the results is auditable. Click any metric card or chart value to open the **calculation detail panel**, which shows:
+
+    - The exact formula used
+    - All input parameters and their values
+    - The sample window (number of trading days)
+    - The adjustment convention applied to prices
+    - The data cutoff date — the most recent date for which data was available at the time of calculation
+
+    If any input data was missing, not applicable, or restricted, it is flagged explicitly. Dassai never substitutes a plausible value for missing data — the affected metric is either calculated on the available subset with a disclosure, or marked as unavailable.
+  </Step>
+</Steps>
+
+## Understanding Adjusted Prices
+
+All return calculations in Dassai use the **forward-adjusted closing price** convention. This is the standard approach for A-share historical return analysis.
+
+Forward adjustment applies a cumulative adjustment factor to all historical prices, working backward from the most recent price, so that the adjusted price series reflects what the price would have been if all past corporate actions had occurred at today's price level. The convention means:
+
+- Dividends are incorporated into the price series as if they had been reinvested
+- Rights issues, bonus shares, and splits are reflected as step-free adjustments in the price history
+- The current price is always equal to the unadjusted close for the most recent trading day
+
+Both the raw closing price and the adjustment factor are traceable in the source drawer for any price data point. If you want to verify a return calculation manually, the raw close and the adjustment factor are available for every trading day in the analysis period.
+
+## Saving Analysis as a Workbench
+
+A portfolio analysis is a snapshot — it captures performance as of the analysis date. To track the same metrics as the portfolio evolves, save the analysis components to a Research Workbench.
+
+From the analysis results page, select the components you want to persist (benchmark comparison, contribution breakdown, risk metrics), then click **Save to Workbench**. Follow the steps in the [Building a Research Workbench](/guides/building-a-workbench) guide to configure update frequency and data bindings.
+
+<Tip>
+  Use portfolio analysis to understand what drove historical patterns, not to predict future performance. The contribution breakdown is particularly useful for identifying unintended concentration — a single position that dominated historical returns may also dominate future risk.
+</Tip>

@@ -1,0 +1,89 @@
+---
+title: "Judgment Premises: Track the Logic Behind Your Investment Views"
+sidebarTitle: "Judgment Premises"
+description: "Judgment Premises let you record the specific propositions your investment thesis depends on, so Dassai can alert you when evidence challenges them."
+---
+
+A Judgment Premise (判断前提) is a specific, testable proposition that your current investment view depends on — written in your own words and confirmed by you. Rather than storing a vague "bullish on X" note, a premise captures the exact condition that must hold for your thesis to remain valid: "公司毛利率将持续高于50%" or "电池原材料成本在未来两个季度内不会大幅上涨." When new evidence appears that touches a confirmed premise — supporting it, weakening it, or directly contradicting it — Dassai creates a review task so you can evaluate the change with full source context and decide what to do. Your thesis is never silently overwritten; every decision you make after reviewing evidence is recorded as a Research Disposition and remains yours to own.
+
+## The problem they solve
+
+Most investors hold investment views that were formed at a specific moment in time, based on a specific set of facts. The problem is that the original reasoning rarely travels forward with the position. Weeks later, when a new earnings report or policy announcement lands, it is genuinely difficult to remember: which part of my original thesis does this touch? Does this change anything, or is it noise?
+
+Without a structured record of your premises, you face two common failure modes:
+
+- **Confirmation bias creep** — you unconsciously discount new evidence that challenges your view because you no longer have the original reasoning written down to compare against
+- **Silent thesis drift** — your actual basis for holding a position gradually changes as facts accumulate, but you never formally acknowledge the change or record why you maintained your view despite conflicting evidence
+
+Judgment Premises solve both problems by making your reasoning explicit, version-controlled, and directly linked to incoming evidence. Dassai does not tell you what to think about new evidence — it makes sure you actually see it.
+
+## How judgment premises work
+
+<Steps>
+  <Step title="Confirm a premise">
+    After a research conversation surfaces a key assumption, Dassai will suggest candidate premises based on the analysis. You review the wording, edit it to match your precise thinking, and confirm it. Alternatively, you can write a premise from scratch inside a Research Workbench at any time.
+
+    **Example premise:** "公司毛利率将持续高于50%，受益于规模效应与原材料成本下行"
+
+    Once you confirm a premise, it becomes version 1 and begins actively driving evidence monitoring. An AI draft alone is never active — confirmation is always your action.
+  </Step>
+  <Step title="Dassai watches for relevant evidence">
+    From the moment you confirm a premise, Dassai's evidence layer monitors incoming disclosures, financial reports, and market data for facts that are materially related to that specific proposition. This happens automatically whenever you open the workbench or trigger a manual refresh.
+  </Step>
+  <Step title="A Review Trigger is created">
+    When a relevant evidence fact is found, the system records a Review Trigger (复核触发) — a system-level record linking the new fact to your confirmed premise. A single incoming event (such as a quarterly earnings release) may create multiple review triggers if it contains several facts relevant to different premises.
+  </Step>
+  <Step title="A Pending Review item surfaces in Notifications">
+    One or more review triggers from the same event are aggregated into a single Pending Review item (待复核项) in your Notifications surface. The alert explains exactly which premise is affected, what the new evidence says, and which source it comes from. It is never a black-box signal — you can inspect every underlying fact before deciding.
+  </Step>
+  <Step title="You review the evidence">
+    Open the Pending Review item to enter the Judgment Review (判断复核) flow. You see the original premise, the new evidence fact, the source snapshot it came from, and an evidence assessment showing the direction of impact. You read the underlying source, evaluate the evidence in context, and choose one of four actions: **maintain**, **adjust**, **continue research**, or **wait**.
+  </Step>
+  <Step title="Your Research Disposition is saved">
+    Your choice and reasoning are recorded as a Research Disposition (研究处置). This record is permanent and cannot be silently overwritten — not by new AI analysis, not by subsequent evidence, not by a new model run. If you later change your view, you do so through a new Judgment Review that produces a new disposition, with the old one preserved in your history. The audit trail is always intact.
+  </Step>
+</Steps>
+
+## Evidence impact categories
+
+When Dassai assesses how a new evidence fact relates to one of your confirmed premises, it classifies the relationship into one of five categories. These categories describe the logical impact of the fact on your premise — they are not sentiment scores or source ratings.
+
+<Accordion title="Supports (支持)">
+  The evidence fact is directly consistent with your premise and increases its plausibility. For example, a quarterly gross margin figure of 53.2% supports a premise that "毛利率将持续高于50%." Supporting evidence does not eliminate the need for ongoing monitoring — it confirms the premise is holding as of the evidence date.
+</Accordion>
+
+<Accordion title="Weakens (削弱)">
+  The evidence fact is inconsistent with your premise in a way that reduces its plausibility without definitively falsifying it. For example, a supply-chain cost disclosure that shows raw material prices rising materially weakens a premise that depends on continued cost deflation, even if the gross margin has not yet deteriorated. Weakening evidence is the most common trigger for a Pending Review.
+</Accordion>
+
+<Accordion title="Conflicts (冲突)">
+  The evidence fact directly contradicts a key claim in your premise. For example, an official earnings announcement showing a gross margin of 42% directly conflicts with a premise that the margin "will remain above 50%." Conflicting evidence triggers an immediate Pending Review with high importance.
+</Accordion>
+
+<Accordion title="Irrelevant (无关)">
+  Dassai determined that the fact is related to the same company or sector but does not materially affect the specific proposition in your premise. Irrelevant assessments are recorded but do not generate a Pending Review item — they are visible in the workbench evidence log for your reference.
+</Accordion>
+
+<Accordion title="Insufficient Evidence (证据不足)">
+  The fact appears related to your premise, but there is not enough information in the available source to make a reliable impact assessment. Dassai surfaces the fact and labels it as requiring further research rather than forcing an impact classification. You can investigate further or set a watch condition to monitor for additional data.
+</Accordion>
+
+## Judgment versions
+
+When you confirm an investment judgment (当前判断) — the overall thesis that your premises collectively support — Dassai saves it as a versioned snapshot: the exact text, the set of premises it relies on at that moment, and the date of adoption. This is **Judgment Version 1**.
+
+Each time you adopt a materially changed judgment (for example, after adjusting a premise or adding a new one), a new version is created and the old version is preserved in your version history. Versions are immutable records — you can always go back and read what you believed at any point in time, alongside the evidence that was available then.
+
+One important nuance: if you complete a Judgment Review and choose **maintain** — meaning you have reviewed the new evidence and decided your thesis still holds — this does not create a new judgment version. It records a Research Disposition (你已审查并选择保持), but the judgment text itself has not changed, so no new version is warranted. This keeps version history meaningful: a new version always means a real change in what you believe.
+
+## Watch conditions
+
+A Watch Condition (关注条件) is a specific, forward-looking monitor bound to a judgment premise. Where a premise is a proposition you believe to be true now, a watch condition is a future trigger you want Dassai to flag — for example, "当季度毛利率低于48%时通知我" or "当公司发布任何关于原材料采购成本的公告时通知我."
+
+Each watch condition specifies the object being monitored, the metric or disclosure type, the operator and threshold, and the evaluation frequency. Before a watch condition becomes active, you confirm a preview that shows exactly what will be monitored and what the system's limitations are — Dassai never silently activates monitoring based on an AI draft.
+
+An important constraint: if you update or revise a judgment premise to a new version, any watch conditions bound to the old premise version must be explicitly re-confirmed for the new version. This design ensures that your monitoring always reflects your current thinking, not a stale definition.
+
+<Warning>
+  Dassai never overwrites your confirmed judgment premises or research dispositions. If new evidence arrives that contradicts a premise you confirmed, Dassai creates a Pending Review item and waits for your decision. The AI may suggest updated premise wording or flag the conflict, but the change only takes effect when you review the evidence and explicitly adopt a new judgment. Your reasoning history is always preserved.
+</Warning>

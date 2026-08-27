@@ -1,0 +1,118 @@
+---
+title: "Set Up Your Dassai Account and Profile"
+sidebarTitle: "Account Setup"
+description: "Configure your Dassai account, add your A-share holdings and watchlists, set notification preferences, and prepare for your first research session."
+---
+
+Before Dassai can monitor your investment premises and surface relevant alerts, your account needs a small amount of configuration. This guide walks you through signing in, completing First Activation, adding your A-share securities, and configuring how and when you receive notifications. The whole process takes less than ten minutes, and you can complete each section independently.
+
+## Sign-in options
+
+Dassai supports two ways to sign in:
+
+<Tabs>
+  <Tab title="WeChat OAuth">
+    Click **微信登录** on the sign-in page. A QR code appears — scan it with the WeChat mobile app and confirm authorization. Dassai receives only a unique identifier and display name from WeChat; no financial data or contact list is accessed.
+
+    WeChat sign-in does not require a separate password. On subsequent visits, scanning the QR code or tapping the WeChat prompt on mobile signs you back in immediately.
+  </Tab>
+  <Tab title="Email and password">
+    Enter your email address and choose a password of at least 8 characters. Dassai sends a verification email to the address you provide — click the link in that email to activate your account.
+
+    If you lose access to your password, use the **忘记密码** (Forgot Password) link on the sign-in page to receive a reset link at your registered email address.
+  </Tab>
+</Tabs>
+
+## First-time activation (首次激活)
+
+When you sign in for the first time, Dassai walks you through **First Activation** — the one-time setup sequence that enables the product's monitoring and alert capabilities. First Activation has three components, all of which must be completed before Dassai can begin sending you judgment review notifications:
+
+<Steps>
+  <Step title="Confirm your holdings or watchlist">
+    Add at least one A-share security to your research portfolio or watchlist. This tells Dassai which securities to watch for relevant fact changes. You can add stocks by Chinese name, six-digit symbol, or exchange-qualified code (for example, `600519.SH`).
+  </Step>
+  <Step title="Save your first Research Workbench">
+    Ask a research question using the Ask bar — or select a suggested question from the Dashboard — and save at least one component from the answer to a named Research Workbench. This ensures you have a persistent research container to anchor future evidence and premises.
+  </Step>
+  <Step title="Confirm at least one Judgment Premise">
+    Record your first Judgment Premise: a statement of the reasoning behind an investment view, expressed in your own words. For example: *"比亚迪的电动车市场份额将在未来12个月内继续扩大，因为其垂直整合的供应链优势难以被同行复制。"* Dassai maps new evidence facts against this premise and creates a review task when something material changes. You must explicitly confirm the premise — it is never auto-generated without your approval.
+  </Step>
+</Steps>
+
+You can pause and resume First Activation at any time. Your progress is saved automatically. Until all three steps are complete, Dassai will display a setup prompt on the Dashboard reminding you what remains.
+
+<Note>
+  First Activation is required for Dassai's monitoring features to become active. Basic research — asking questions, exploring search, and reading your Research surface — works from the moment you sign in, regardless of activation status.
+</Note>
+
+## Adding securities
+
+Dassai separates your securities into two distinct collections, each with a different purpose:
+
+<Accordion title="Watchlist (关注列表)">
+  A watchlist is a flat list of securities you want to track. Items on your watchlist appear in Dashboard context, feed into fact-change alerts, and are available as conversation context in the Ask bar. Watchlist items do not carry weights or implied position sizes.
+
+  To add a security to your watchlist:
+  1. Go to **Investments** → **Watchlist** tab.
+  2. Click **添加证券**.
+  3. Search by Chinese name, six-digit symbol, or exchange-qualified code.
+  4. Select the correct security from the disambiguation list if needed, and click **添加**.
+</Accordion>
+
+<Accordion title="Research Portfolio (研究组合)">
+  A research portfolio is a named collection of A-share securities with assigned research weights. It is used for simulated portfolio analysis — benchmark-relative return, contribution, volatility, drawdown, and risk metrics. Research portfolios represent your analytical model, not a real brokerage account.
+
+  To create a research portfolio:
+  1. Go to **Investments** → **Research Portfolios** tab.
+  2. Click **新建组合** (New Portfolio) and give it a name, for example: "核心持仓模拟" or "消费板块研究篮".
+  3. Add securities and assign each one a research weight (as a percentage).
+  4. Dassai will highlight weights that do not sum correctly before allowing portfolio analysis to run.
+
+  You can create multiple named portfolios to represent different research scenarios or time periods.
+</Accordion>
+
+<Info>
+  Dassai supports A-share securities in three input formats: **six-digit symbol** (e.g., `600519`), **exchange-qualified code** (e.g., `600519.SH` for Shanghai, `000001.SZ` for Shenzhen), or **Chinese company name** (e.g., `贵州茅台`). Historical names and common abbreviations are also recognized. If a name is ambiguous or has changed, Dassai will ask you to confirm the correct security before proceeding.
+</Info>
+
+## Notification settings
+
+Dassai's **Notifications** surface shows fact changes, pending judgment reviews, and monitor-condition matches. You control how often you are notified and which categories matter to you.
+
+To configure your notification preferences:
+1. Go to **Notifications** → **Settings** tab.
+2. Adjust the following options:
+
+<ParamField body="alert_frequency" type="enum" default="daily_digest">
+  How often Dassai aggregates and surfaces new notifications.
+  - `realtime` — surface new notifications immediately on login.
+  - `daily_digest` — aggregate and surface a summary once per day.
+  - `manual_only` — only show notifications when you visit the Notifications page.
+</ParamField>
+
+<ParamField body="fact_change_alerts" type="boolean" default="true">
+  Receive notifications when a new fact crosses the relevance threshold for a security in your watchlist or research portfolio.
+</ParamField>
+
+<ParamField body="judgment_review_alerts" type="boolean" default="true">
+  Receive notifications when new evidence is mapped to one of your confirmed Judgment Premises, creating a pending review item.
+</ParamField>
+
+<ParamField body="disclosure_alerts" type="boolean" default="true">
+  Receive notifications when official exchange announcements, periodic reports, or performance forecasts are published for securities you follow.
+</ParamField>
+
+<Note>
+  Dassai checks monitoring conditions on application startup and manual refresh. It does not run continuous background monitoring outside of the application session. Every notification explains the triggering condition, the affected security or Judgment Premise, and the source — you will never receive a notification that does not tell you why it was sent.
+</Note>
+
+## Privacy and data
+
+All research data in Dassai is **private to your account**. Specifically:
+
+- **Research Workbenches** — visible only to you. No sharing, public links, or team access is available in the current version.
+- **Judgment Premises and review history** — private records of your own investment reasoning. Dassai cannot access, use, or train on your premises without your explicit consent.
+- **Conversation history** — all conversations, including questions, AI answers, and source snapshots, are stored privately under your account and accessible only by you.
+- **Research portfolios and watchlists** — your security selections and research weights are stored privately and are never used to infer trading activity or shared with third parties.
+
+Dassai does not connect to or read from any brokerage account. Research portfolios are manual constructions you build yourself; they represent a research model, not your actual holdings.

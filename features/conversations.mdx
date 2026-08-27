@@ -1,0 +1,172 @@
+---
+title: "Conversations: Ask Anything About A-Share Investments"
+sidebarTitle: "Conversations"
+description: "The Conversations surface in Dassai lets you ask free-form research questions in Chinese and get structured, source-backed answers with interactive components."
+---
+
+Conversations are where you turn a research question into structured, verifiable analysis. Type a question in natural Chinese — about a company, an ETF, a sector, a portfolio scenario, or a market event — and Dassai's Super Agent plans the research, pulls data from authoritative sources, runs deterministic calculations, and returns a layered answer you can inspect, challenge, and follow up on. Every material claim is either tied to a traceable source or explicitly labeled as interpretation. Nothing is left to plausible-sounding text.
+
+<Info>
+  Thread history preserves the original data snapshots used when each answer was generated. Reopening an old conversation shows the answer exactly as it appeared at the time. Use the **Rerun** button on any answer to recalculate with current data — this creates a new linked result while keeping the original intact.
+</Info>
+
+## The Global Ask Bar
+
+The ask bar is available on the Dashboard, the Conversations surface, and inside any active answer context. It stays fixed at the bottom of the screen so you can always start or continue research without navigating away from what you are reading.
+
+The ask bar has three input areas that work together:
+
+<CardGroup cols={3}>
+  <Card title="Free Text" icon="keyboard">
+    Type any research question in natural Chinese. You can use company names, six-digit stock codes, exchange-qualified codes (for example, 600519.SH), or common abbreviations. Dassai resolves the entity and confirms it before running the analysis.
+  </Card>
+  <Card title="Task Template (My Asks)" icon="list-check">
+    Click the template icon to open the My Asks panel and select a reusable research task. The selected template name appears as a chip beside the input field. Templates shape how the answer is structured without limiting what you can type.
+  </Card>
+  <Card title="Investment Context (Investments Picker)" icon="briefcase">
+    Click the context icon to attach one or more securities, a research portfolio, or watchlist items. Selected objects appear as removable chips so you always know exactly what the answer will be scoped to.
+  </Card>
+</CardGroup>
+
+All three inputs are optional in combination, but using the investment context picker produces the most targeted answers because the agent knows which specific securities or portfolio to analyze.
+
+## Composing a Question
+
+Follow these steps to compose a well-formed research question:
+
+<Steps>
+  <Step title="Type your question">
+    Enter your question in the free-text area. Use natural Chinese — for example: "宁德时代最近两个季度的毛利率变化趋势如何，和同行相比怎么样？" You do not need to follow any query syntax. If the question is ambiguous, Dassai will ask one clarifying question before proceeding.
+  </Step>
+  <Step title="Attach an investment context (optional)">
+    Click the **Investments** icon to the left of the input field. The picker shows tabs for your Research Portfolios, individual Holdings, and Watchlist. Select one or more items — they appear as chips in the input bar. To remove context, click the × on any chip. Attaching context ensures the answer focuses on the specific securities you care about rather than a general response.
+  </Step>
+  <Step title="Select a task template (optional)">
+    Click the **My Asks** icon to open the template panel. Browse by category or search by keyword. Click any template to apply it — the template name appears as a chip. The template pre-structures the answer format (for example, always include a peer comparison table, or always show source citations expanded). You can still type additional free text alongside a template.
+  </Step>
+  <Step title="Submit">
+    Press **Enter** or click the send button to submit. Dassai shows visible execution stages — resolving entities, fetching data, calculating, composing, verifying — so you can see what is happening. If a stage fails, a labeled error and retry action appear; the question is never silently dropped.
+  </Step>
+</Steps>
+
+## My Asks (Task Templates)
+
+My Asks is a library of reusable research task templates organized into six categories:
+
+<Accordion title="Popular">
+  High-frequency tasks used across the Dassai user base: company snapshots, earnings summaries, sector comparisons, and recent disclosure reviews. A good place to start if you are exploring Dassai's capabilities.
+</Accordion>
+
+<Accordion title="Portfolio">
+  Tasks scoped to a research portfolio: return attribution, risk metrics, benchmark comparison, sector allocation review, and macro scenario modeling. Selecting a portfolio from the Investments picker makes these templates maximally useful.
+</Accordion>
+
+<Accordion title="Research">
+  Deep-dive templates for specific analytical workflows: valuation analysis, financial-period comparison, peer benchmarking, disclosure deep-dive, and historical event impact. Each template structures the answer to expose methodology and data sources.
+</Accordion>
+
+<Accordion title="Ideas">
+  Discovery-oriented tasks for finding new research candidates: natural-language screening, theme and sector exploration, earnings anomaly detection, and watchlist expansion suggestions. Results are evidence-backed screened lists, not recommendations.
+</Accordion>
+
+<Accordion title="Fast Actions">
+  Short, targeted tasks for quick lookups: latest price and change, most recent announcement, current valuation multiples, and trading suspension status. Designed for when you need a single fact fast.
+</Accordion>
+
+<Accordion title="Pre-trade Research (交易前研究)">
+  Research tasks that help you think through a position before making a decision: liquidity check, downside scenario, risk factor review, valuation vs. history, and assumption checklist. These tasks never produce executable instructions, order previews, or buy/sell directions. Dassai does not provide personalized investment advice or connect to any brokerage.
+</Accordion>
+
+**Saving your own templates:** after getting a useful answer, click the **Save as Template** option in the answer menu. Give the template a name, choose a category, and confirm. Your personal templates appear at the top of the relevant category with an edit (✎) and delete (✕) control.
+
+**Editing and deleting:** open My Asks, hover over any personal template, and click the edit icon to rename it or update its prompt text. Click delete to remove it permanently. System templates cannot be edited or deleted, but you can duplicate them as a starting point for a personal version.
+
+## Reading an Answer
+
+Every answer Dassai generates has three layers. You can read at the level of detail you need.
+
+<Tabs>
+  <Tab title="Conclusion Layer">
+    The top of every answer contains a scannable summary: the core finding stated in plain language, the key metric or comparison that drives the conclusion, and any important caveats. Read this layer when you need a quick orientation before deciding whether to dig deeper.
+
+    Claims in the conclusion layer are always tied to numbered citations or explicitly labeled as "解读" (interpretation). If a claim cannot be grounded in a verified fact, it does not appear in the conclusion.
+  </Tab>
+  <Tab title="Interactive Layer">
+    Below the conclusion, Dassai renders interactive components appropriate to the question type:
+
+    - **Charts** — trend lines, bar charts, and waterfall charts with adjustable time ranges and comparison benchmarks
+    - **Tables** — sortable, searchable data tables with column selection and pagination
+    - **Metric cards** — individual financial or market metrics with period, unit, adjustment convention, and data freshness shown on each card
+    - **Scenario panels** — parameter sliders or input fields that let you model alternative assumptions and see how outcomes change
+
+    You can interact with any component directly: change a date range, add a comparison security, or adjust a scenario parameter. The component recalculates using deterministic services and updates immediately. Components can be saved to a Research Workbench using the save icon in the component header.
+  </Tab>
+  <Tab title="Evidence Layer">
+    Every answer includes an evidence section below the interactive components. It contains:
+
+    - **Numbered citations** — each material claim in the answer carries a superscript citation number. Click the number to jump to the source entry.
+    - **Source drawer** — each source entry shows: provider name, document title, source type (exchange filing, periodic report, research report, or data feed), publication time, data capture time, coverage period, and a link to the original location where independently verifiable.
+    - **Calculation details** — for any computed metric, an expandable block shows the formula identifier, input parameters, sample window, adjustment convention, data cutoff, and calculation version. This makes every number reproducible.
+    - **Partial and unavailable data labels** — if a source is unavailable, permission-restricted, or data is missing, the entry is explicitly labeled with the reason. Missing data is never coerced to zero or filled with plausible text.
+  </Tab>
+</Tabs>
+
+## Clarification Flow
+
+When your question is ambiguous in a way that would materially change the answer — for example, if "宁德" could match more than one listed entity — Dassai pauses before running the full analysis and asks one focused clarifying question.
+
+- **Entity disambiguation:** if multiple securities match your input, Dassai shows a compact picker listing each candidate with its full name, six-digit code, exchange, and board. Select the correct one and the answer proceeds.
+- **Scope clarification:** if the question scope is unclear (for example, "最近" could mean the last week or the last quarter), Dassai asks you to confirm the intended period rather than assuming.
+- **Guide Me mode:** type "帮我想" or click **Guide Me** in the ask bar to enter a guided clarification flow. Dassai asks one focused question at a time — about the object, your goal, and the time frame — and then converts your answers into a precise research task. At no point does Guide Me suggest a trade direction or produce a buy/sell implication.
+
+<Note>
+  Dassai only asks for clarification when ambiguity would meaningfully change the result. Simple factual questions — current price, latest earnings, recent announcements — proceed immediately without interruption.
+</Note>
+
+## Follow-up Questions
+
+Every answer includes a row of **suggested follow-up chips** at the bottom. These are context-aware questions generated from the current answer — for example, after a valuation analysis you might see chips like "同行估值对比如何？" or "近三年有哪些重大资本运作？".
+
+- Click any chip to submit that follow-up instantly. The new question inherits the current security context and date range unless you change them in the ask bar.
+- The thread accumulates as a scrollable conversation. Each turn shows the question, the answer, and the sources used for that specific turn.
+- You can type a custom follow-up at any time — the context from previous turns remains active until you start a new conversation or clear the context chips.
+
+## Managing Conversations
+
+Keep your research organized by renaming, pinning, and archiving conversations.
+
+<CardGroup cols={3}>
+  <Card title="Rename" icon="pen">
+    Right-click any conversation in the sidebar and select **Rename**, or click the pencil icon when hovering. Give it a descriptive name like "贵州茅台估值研究 2025Q2" so you can find it later.
+  </Card>
+  <Card title="Pin" icon="thumbtack">
+    Pin important conversations to the top of the sidebar. Pinned conversations stay visible above unpinned ones regardless of recency. You can pin up to ten conversations.
+  </Card>
+  <Card title="Archive" icon="box-archive">
+    Archive conversations you have finished with to keep the sidebar tidy. Archived conversations remain fully searchable and reopenable from the History surface. Archiving does not delete any data or snapshots.
+  </Card>
+</CardGroup>
+
+**Starting a new conversation:** click **New Conversation** in the sidebar or press the keyboard shortcut. A new conversation starts with a clean context — no security context, portfolio, or thread history is carried over from a previous conversation. This prevents cross-thread contamination where context from one research question silently affects another.
+
+## Feedback
+
+If any part of an answer is incorrect, use the feedback controls to report it. Feedback is specific: choose the type of error that best describes the problem.
+
+<Accordion title="Incorrect entity">
+  The answer analyzed the wrong company, ETF, or index — for example, it resolved "宁德" to a company other than the one you intended. Use this to report entity resolution errors.
+</Accordion>
+
+<Accordion title="Incorrect calculation">
+  A metric, return figure, or financial ratio appears to be computed incorrectly. Include the value you saw and, if you have it, the value you expected with a source. Dassai will preserve the original run record for audit.
+</Accordion>
+
+<Accordion title="Incorrect citation">
+  A source is attributed to the wrong document, date, or company, or a citation does not actually support the claim it is attached to.
+</Accordion>
+
+<Accordion title="Incorrect explanation">
+  The narrative interpretation of a fact is misleading, overstated, or inconsistent with the underlying data. This covers tone and analytical framing, not just factual errors.
+</Accordion>
+
+Submitting feedback preserves the original run record — including the plan, tool calls, data snapshot, and generated text — so that the failure is auditable. You receive a confirmation that your feedback was recorded. The original answer is not altered retroactively; if you rerun the question, the new result is linked to the original as a separate version.
