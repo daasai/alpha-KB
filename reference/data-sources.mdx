@@ -1,5 +1,5 @@
 ---
-title: "Data Sources and Coverage in Dassai"
+title: "Market Data Sources, Coverage, and Limitations in Dassai"
 sidebarTitle: "Data Sources"
 description: "Learn which market data, financial reports, and announcement sources Dassai uses, how data is timestamped, and what coverage limitations exist."
 ---
@@ -80,7 +80,7 @@ Dassai does not use a single global "data as of" timestamp. Instead, every data 
 When data is stale beyond a defined threshold, Dassai produces an explicit warning rather than displaying the value without comment. The AI does not fill data gaps with plausible text — if a value is missing, the gap is labeled as a gap.
 
 <Info>
-  Dassai uses **Tushare Pro** as its primary market data provider for live data. All data access follows Tushare's licensing terms. For development, testing, and external demonstrations, Dassai operates in fixture mode using versioned, pre-recorded datasets that do not require a live Tushare connection.
+  Dassai uses licensed market data from official and commercial data providers. All data access is governed by the applicable licensing terms. Data values, coverage dates, and field availability reflect the terms of those licenses and may vary by provider.
 </Info>
 
 ## Coverage Limitations

@@ -79,5 +79,5 @@ Dassai represents missing or unavailable data using three distinct states. None 
 This three-way distinction matters in practice: if a gross margin figure is missing, you know the data gap is a coverage issue and can seek the information elsewhere. If it shows permission denied, you know the data exists and the path to accessing it. Conflating these states — or setting them all to zero — would make financial analysis silently misleading.
 
 <Note>
-  Dassai uses fixture data for product demonstrations, CI testing, and any user session before live market data is configured. Fixture data reproduces realistic A-share research scenarios but does not represent real-time or historical market prices. Live market data requires Tushare authorization in production environments. Every session running on fixture data displays a clear indicator so you always know which data mode is active.
+  Dassai uses fixture data for product demonstrations and early-access sessions. Fixture data reproduces realistic A-share research scenarios — with accurate company structures, typical financial ratios, and representative disclosure events — but does not represent real-time or historical market prices. Every session running on fixture data displays a clear indicator in the interface so you always know which data mode is active.
 </Note>

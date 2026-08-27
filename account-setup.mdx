@@ -1,5 +1,5 @@
 ---
-title: "Set Up Your Dassai Account and Profile"
+title: "Dassai Account Setup: Holdings, Alerts, and Activation"
 sidebarTitle: "Account Setup"
 description: "Configure your Dassai account, add your A-share holdings and watchlists, set notification preferences, and prepare for your first research session."
 ---
@@ -83,24 +83,27 @@ To configure your notification preferences:
 1. Go to **Notifications** → **Settings** tab.
 2. Adjust the following options:
 
-<ParamField body="alert_frequency" type="enum" default="daily_digest">
-  How often Dassai aggregates and surfaces new notifications.
-  - `realtime` — surface new notifications immediately on login.
-  - `daily_digest` — aggregate and surface a summary once per day.
-  - `manual_only` — only show notifications when you visit the Notifications page.
-</ParamField>
+<AccordionGroup>
+  <Accordion title="Alert frequency">
+    Controls how often Dassai aggregates and surfaces new notifications. Choose from:
 
-<ParamField body="fact_change_alerts" type="boolean" default="true">
-  Receive notifications when a new fact crosses the relevance threshold for a security in your watchlist or research portfolio.
-</ParamField>
+    - **Realtime** — new notifications appear immediately the next time you log in.
+    - **Daily digest** *(default)* — Dassai aggregates all new notifications and surfaces a summary once per day.
+    - **Manual only** — notifications are only shown when you visit the Notifications page directly.
+  </Accordion>
 
-<ParamField body="judgment_review_alerts" type="boolean" default="true">
-  Receive notifications when new evidence is mapped to one of your confirmed Judgment Premises, creating a pending review item.
-</ParamField>
+  <Accordion title="Fact change alerts (on by default)">
+    When enabled, you receive a notification whenever a new fact crosses the relevance threshold for a security in your watchlist or research portfolio. Fact changes are always linked to a specific security and source.
+  </Accordion>
 
-<ParamField body="disclosure_alerts" type="boolean" default="true">
-  Receive notifications when official exchange announcements, periodic reports, or performance forecasts are published for securities you follow.
-</ParamField>
+  <Accordion title="Judgment review alerts (on by default)">
+    When enabled, you receive a notification when new evidence is mapped to one of your confirmed Judgment Premises, creating a pending review item. You can act on, defer, or dismiss each review item from the Notifications surface.
+  </Accordion>
+
+  <Accordion title="Disclosure alerts (on by default)">
+    When enabled, you receive a notification when official exchange announcements, periodic reports, or performance forecasts are published for securities you follow.
+  </Accordion>
+</AccordionGroup>
 
 <Note>
   Dassai checks monitoring conditions on application startup and manual refresh. It does not run continuous background monitoring outside of the application session. Every notification explains the triggering condition, the affected security or Judgment Premise, and the source — you will never receive a notification that does not tell you why it was sent.
